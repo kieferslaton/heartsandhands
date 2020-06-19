@@ -44,7 +44,7 @@ const IndexPage = () => (
             <p className="mx-3">
               Make a lasting impact. Donate today to the fight against hunger.
             </p>
-            <button class="btn btn-link border border-primary">LEARN MORE ></button>
+            <button class="btn btn-link border border-primary">LEARN MORE</button>
           </div>
           <div className="col-10 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
             <img className="img-fluid w-100" src={splash2} alt="splash2" />
@@ -52,13 +52,13 @@ const IndexPage = () => (
             <p className="mx-3">
               Find out how you can help us get food to the people who need it.
             </p>
-            <button class="btn btn-link border border-primary">LEARN MORE ></button>
+            <button class="btn btn-link border border-primary">LEARN MORE</button>
           </div>
           <div className="col-10 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
             <img className="img-fluid w-100" src={splash3} alt="splash3" />
             <h2>GET HELP</h2>
             <p className="mx-3">Need local assistance? We're here to help.</p>
-            <button class="btn btn-link border border-primary">LEARN MORE ></button>
+            <button class="btn btn-link border border-primary">LEARN MORE</button>
           </div>
         </div>
       </div>
