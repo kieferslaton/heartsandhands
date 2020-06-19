@@ -5,21 +5,35 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "gatsby": "^2.22.15",
+    "@emotion/styled": "^10.0.27",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.7.0",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "gatsby": "^2.23.3",
     "gatsby-image": "^2.4.5",
     "gatsby-plugin-manifest": "^2.4.9",
     "gatsby-plugin-offline": "^3.2.7",
     "gatsby-plugin-react-helmet": "^3.3.2",
     "gatsby-plugin-sharp": "^2.6.9",
     "gatsby-source-filesystem": "^2.3.8",
+    "gatsby-source-graphql": "^2.5.4",
     "gatsby-transformer-sharp": "^2.5.3",
+    "jquery": "^3.5.1",
+    "moment": "^2.26.0",
+    "popper": "^1.0.1",
+    "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
+    "react-big-calendar": "^0.25.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.0.0"
+    "react-helmet": "^6.0.0",
+    "react-icons": "^3.10.0",
+    "stripe": "^8.64.0"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "prettier": "2.0.5",
+    "superagent": "^5.2.2"
   },
   "keywords": [
     "gatsby"

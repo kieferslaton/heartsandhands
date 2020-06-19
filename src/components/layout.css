@@ -620,3 +620,175 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+*{
+  font-family: 'Roboto';
+  font-weight: 300
+}
+
+#covid-banner{
+  color: white;
+  font-size: 1em;
+}
+
+.icon-bar {
+  width: 22px;
+  height: 2px;
+  background-color: #B6b6b6;
+  display: block;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+
+.navbar-toggler {
+  border: none;
+  background: transparent !important;
+}
+
+.navbar-toggler:focus {
+  outline: none!important;
+}
+ 
+.navbar-toggler .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+ 
+.navbar-toggler .middle-bar {
+  opacity: 0;
+}
+ 
+.navbar-toggler .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+}
+ 
+.navbar-toggler.collapsed .top-bar {
+  transform: rotate(0);
+}
+ 
+.navbar-toggler.collapsed .middle-bar {
+  opacity: 1;
+}
+ 
+.navbar-toggler.collapsed .bottom-bar {
+  transform: rotate(0);
+}
+
+#hero {
+  background-image: url('../images/hero.jpg');
+  background-size: cover;
+  background-position: center center;
+  height: 500px;
+}
+
+#hero2 {
+  background-image: url('../images/hero2.png');
+  background-size: cover;
+  background-position: center center;
+}
+
+#program-hero {
+  background-image: url('../images/program-hero.png');
+  background-size: cover;
+  background-position: center center;
+  height: 400px;
+}
+
+#donate-hero {
+  background-image: url('../images/donate-hero.jpg');
+  background-size: cover;
+  height: 400px;
+}
+
+.overlay {
+  width: 100% !important;
+  background: rgba(0,0,0,0.7);
+}
+
+.cal-cell {
+  height: 150px;
+  border: 1px solid black;
+}
+
+.dropup button {
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 0.7em;
+  white-space: normal;
+}
+
+.dropdown-toggle::after{
+  content: none !important;
+}
+
+.dropdown-menu{
+  border: 2px solid black;
+  font-size: 0.9em;
+  border-radius: 0;
+  padding: 10px;
+  width: 200%;
+  margin: 0 !important;
+  right: auto !important;
+  left: 50% !important;
+  -webkit-transform: translate(-50%, -100%) !important;
+  transform: translate(-50%, -100%) !important;
+}
+
+.dropdown-menu > p {
+  padding: 5px;
+  margin: 0;
+}
+
+.splash{
+  background: white;
+  border: 1px solid white;
+}
+
+.program:after{
+  content:"";
+  width: 80%;
+  border-bottom: 1px solid gray;
+}
+
+.program:last-child:after{
+  content:"";
+  width: 80%;
+  border-bottom: none;
+}
+
+.donate-btn{
+  height: 75px;
+  width: 75px;
+  padding: 0;
+  background: gray;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  border-radius: 75px;
+}
+
+.donate-btn-active{
+  background: black;
+}
+
+.toggle-btn{
+  background: gray;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.toggle-btn-active{
+  background: black;
+}
+
+.rdl{
+  border-radius: 10px 0 0 10px;
+}
+
+.rdr{
+  border-radius: 0 10px 10px 0;
+}
