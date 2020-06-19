@@ -2,7 +2,7 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-import logo from '../images/logo.png'
+import logo from '../images/Logo.png'
 
 const Header = (props) => {
   const data = useStaticQuery(graphql`
