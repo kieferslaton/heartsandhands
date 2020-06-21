@@ -9,6 +9,7 @@ import {
   startOfWeek,
   endOfWeek,
   addDays,
+  getMonth
 } from "date-fns"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 
@@ -49,9 +50,15 @@ const BigCalendar = props => {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const width = useWindowSize()
 
-  getEvents(events => {
-    setEvents(events)
-  })
+  useEffect(() => {
+    getEvents(events => {
+      setEvents(
+        events.sort(function (a, b) {
+          return new Date(a.start) - new Date(b.start)
+        })
+      )
+    })
+  }, [])
 
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1))
@@ -96,10 +103,10 @@ const BigCalendar = props => {
         }
         days.push(
           <div className="col cal-cell">
-            <p>{format(day, "d")}</p>
+            <p className={(getMonth(day) == getMonth(currentMonth)) ? 'active-month' : 'inactive-month'}>{format(day, "d")}</p>
             <div className="text-center">
               {dayEvents.map(event => (
-                <div class="btn-group dropup mw-100">
+                <div class={`btn-group mw-100 ${(i <=4 ) ? 'dropright' : 'dropleft'}`}>
                   <button
                     type="button"
                     class="btn btn-secondary dropdown-toggle mw-100"
@@ -109,23 +116,43 @@ const BigCalendar = props => {
                       ? event.title + " | " + format(new Date(event.start), "p")
                       : format(new Date(event.start), "p")}
                   </button>
-                  <div class="dropdown-menu text-center">
-                    <p><span class="font-weight-bold">Start:  </span>{format(new Date(event.start), "p")}</p>
-                    <p><span class="font-weight-bold">End:  </span>{format(new Date(event.end), "p")}</p>
-                    <p className={event.location ? "" : "d-none"}>
-                    <span class="font-weight-bold">Location:  </span>
-                      <a
-                        href={
-                          event.location
-                            ? "http://maps.google.com/maps?q=" +
-                              event.location.replace(/ /g, "+")
-                            : ""
-                        }
-                        className={event.location ? "" : "d-none"}
+                  <div class="dropdown-menu p-0 m-0">
+                  <div class="card-body event p-0 m-0">
+                      <div
+                        class={`font-weight-bold w-100 m-0 event-header ${
+                          i % 3 == 0
+                            ? "event-bg-1"
+                            : i % 3 == 1
+                            ? "event-bg-2"
+                            : "event-bg-3"
+                        }`}
                       >
-                        {event.location}{" "}
-                      </a>
-                    </p>
+                        <div class="overlay pt-2 h-100 align-items-center">
+                          <p className="font-weight-bold">{event.title.toUpperCase()}</p>
+                        </div>
+                      </div>
+                      <div className="event-content px-3">
+                      <p>
+                        <span class="font-weight-bold">Time: </span>
+                        {format(new Date(event.start), "Pp")}-{format(new Date(event.end), "p")}
+                      </p>
+                      <p className={event.location ? "" : "d-none"}>
+                        <span class="font-weight-bold">Location: </span>
+                        <a
+                          href={
+                            event.location
+                              ? "http://maps.google.com/maps?q=" +
+                                event.location.replace(/ /g, "+")
+                              : ""
+                          }
+                          className={event.location ? "" : "d-none"}
+                        >
+                          {event.location}{" "}
+                        </a>
+                      </p>
+                      <p className={event.description ? "" : "d-none"}>{event.description}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -146,13 +173,15 @@ const BigCalendar = props => {
     <div className="container-fluid my-5">
       <div className="row justify-content-center">
         <div className="col-10">
-          <div className="header row flex-middle text-center mb-4">
+          <div style={{fontSize: '1.5em'}} className="header row flex-middle text-center mb-4">
             <div className="col col-start">
-              <FaChevronLeft onClick={prevMonth} />
+              <FaChevronLeft className="on-hover" onClick={prevMonth} />
             </div>
-            <div className="col col-center font-weight-bold ">{format(currentMonth, "MMMM")}</div>
+            <div className="col col-center font-weight-bold ">
+              {format(currentMonth, "MMMM")}
+            </div>
             <div className="col col-end">
-              <FaChevronRight onClick={nextMonth} />
+              <FaChevronRight className="on-hover" onClick={nextMonth} />
             </div>
           </div>
           {renderDays()}
@@ -167,59 +196,92 @@ const SmallCalendar = props => {
   const [events, setEvents] = useState([])
   const width = useWindowSize()
 
-  getEvents(events => {
-    setEvents(events.sort(function(a,b){
-      return new Date(a.start) - new Date(b.start)
-    }))
-  })
+  useEffect(() => {
+    getEvents(events => {
+      setEvents(
+        events.sort(function (a, b) {
+          return new Date(a.start) - new Date(b.start)
+        })
+      )
+    })
+  }, [])
 
   return (
-    <div className="row justify-content-center">
-    <div className="col-12 col-sm-10">
-    <div className="container-fluid">
-      <div className="row justify-content-center">
-        <h2>Upcoming Events</h2>
-      </div>
-      {events.map((event, i) => {
-
-          return (
-            <>
-            <div class="card-header">
-            <button class="btn btn-link w-100" type="button" data-toggle="collapse" data-target={"#collapse"+i}>{event.title} | {format(new Date(event.start), "Pp")}</button>
+    <>
+      <div className="row justify-content-center mb-5">
+        <div className="col-12 col-sm-10 col-md-8">
+          <div className="container-fluid">
+            <div className="row justify-content-center my-2">
+              <p style={{ fontSize: "1.3em", fontWeight: "bold" }}>
+                UPCOMING EVENTS
+              </p>
             </div>
-            <div class="collapse" id={"collapse"+i}>
-              <div class="card-body">
-                <p>{event.title}</p>
-                <p>Start: {format(new Date(event.start), "Pp")}</p>
-                <p>End: {format(new Date(event.end), "Pp")}</p>
-                <p className={event.location ? "" : "d-none"}>
-                      Location:
-                      <a
-                        href={
-                          event.location
-                            ? "http://maps.google.com/maps?q=" +
-                              event.location.replace(/ /g, "+")
-                            : ""
-                        }
-                        className={event.location ? "" : "d-none"}
+            {events.map((event, i) => {
+              return (
+                <>
+                  <div class="card-header border">
+                    <button
+                      style={{ color: "black" }}
+                      class="btn btn-link w-100 event-btn"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target={"#collapse" + i}
+                    >
+                      {event.title} | {format(new Date(event.start), "Pp")}
+                    </button>
+                  </div>
+                  <div class="collapse border" id={"collapse" + i}>
+                    <div class="card-body event p-0 m-0">
+                      <div
+                        class={`font-weight-bold w-100 m-0 event-header ${
+                          i % 3 == 0
+                            ? "event-bg-1"
+                            : i % 3 == 1
+                            ? "event-bg-2"
+                            : "event-bg-3"
+                        }`}
                       >
-                        {event.location}{" "}
-                      </a>
-                    </p>
-              </div>
-            </div>
-            </>
-        )})}
-    </div>
-    </div>
-    </div>
+                        <div class="overlay pt-2 h-100 align-items-center">
+                          <p className="font-weight-bold">{event.title.toUpperCase()}</p>
+                        </div>
+                      </div>
+                      <div className="event-content px-3">
+                      <p>
+                        <span class="font-weight-bold">Time: </span>
+                        {format(new Date(event.start), "Pp")}-{format(new Date(event.end), "p")}
+                      </p>
+                      <p className={event.location ? "" : "d-none"}>
+                        <span class="font-weight-bold">Location: </span>
+                        <a
+                          href={
+                            event.location
+                              ? "http://maps.google.com/maps?q=" +
+                                event.location.replace(/ /g, "+")
+                              : ""
+                          }
+                          className={event.location ? "" : "d-none"}
+                        >
+                          {event.location}{" "}
+                        </a>
+                      </p>
+                      <p className={event.description ? "" : "d-none"}>{event.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
 const Calendar = props => {
   const width = useWindowSize()
 
-  if (width > 768) {
+  if (width > 800) {
     return (
       <Layout>
         <SEO title="Calendar" />

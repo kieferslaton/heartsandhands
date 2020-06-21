@@ -7,7 +7,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import MainMenu from './main-menu'
@@ -21,8 +21,8 @@ const Layout = ({ children }) => {
         <main>{children}</main>
       <footer>
         <div className="container-fluid border-top border-dark">
-          <div style={{'font-size': '0.9em','line-height': '1em'}} className="row justify-content-center py-5">
-            <div className="col-6 col-md-3 text-center border-right border-dark">
+          <div style={{'font-size': '1em','line-height': '1em'}} className="row justify-content-center">
+            <div className="col-12 col-md-3 my-md-5 mt-5 mb-3 text-center footer-address">
               <p className="font-weight-bold m-2">HEARTS AND HANDS OF BAYTOWN</p>
               <p className="m-2">A ministry of Iglesia Cristo Viene</p>
               <address className="m-2">
@@ -30,10 +30,10 @@ const Layout = ({ children }) => {
                 Baytown, TX 77520
               </address>
             </div>
-            <div className="col-6 col-md-3 text-center">
-              <p className="font-weight-bold">DONATE</p>
+            <div className="col-12 col-md-3 my-md-5 mb-5 text-center footer-donate">
+              <p className="font-weight-bold pt-4 pt-md-0">DONATE</p>
               <p>Every $1 donated provides enough food for 4 meals.</p>
-              <button class="btn btn-dark">DONATE NOW</button>
+              <Link to="/donate"><button class="btn btn-dark">DONATE NOW</button></Link>
             </div>
           </div>
           <div className="row">

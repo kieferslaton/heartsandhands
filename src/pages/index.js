@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from 'gatsby'
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -13,14 +14,13 @@ const IndexPage = () => (
     <SEO title="Home" />
     <div className="container-fluid p-0 m-0" id="hero">
       <div className="row align-items-center h-100 m-0 p-0 overlay">
-        <div className="col-xl-6 col-lg-7 col-md-10 mx-auto text-center">
+        <div className="col-xl-6 col-lg-7 col-md-10 mx-auto mt-3 text-center">
           <p
-            className="font-weight-bold"
-            style={{ color: "white", "font-size": 85, "line-height": 70 }}
+            className="font-weight-bold hero-text"
           >
             No one should have to go hungry.
           </p>
-          <p style={{ color: "white", "font-size": 30, "line-height": 40 }}>
+          <p className="hero-sub">
             HHB Fresh Market provides food for families in a dignified and
             supportive manner.
           </p>
@@ -38,27 +38,27 @@ const IndexPage = () => (
       </div>
       <div id="hero2">
         <div className="row justify-content-center overlay m-0">
-          <div className="col-10 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
+          <div className="col-10 col-sm-7 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
             <img className="img-fluid w-100" src={splash1} alt="splash1" />
             <h2>GIVE</h2>
             <p className="mx-3">
               Make a lasting impact. Donate today to the fight against hunger.
             </p>
-            <button class="btn btn-link border border-primary">LEARN MORE</button>
+            <Link to="/donate"><button class="btn btn-link border border-primary">LEARN MORE</button></Link>
           </div>
-          <div className="col-10 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
+          <div className="col-10 col-sm-7 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
             <img className="img-fluid w-100" src={splash2} alt="splash2" />
             <h2>VOLUNTEER</h2>
             <p className="mx-3">
               Find out how you can help us get food to the people who need it.
             </p>
-            <button class="btn btn-link border border-primary">LEARN MORE</button>
+            <Link to="/programs"><button class="btn btn-link border border-primary">LEARN MORE</button></Link>
           </div>
-          <div className="col-10 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
+          <div className="col-10 col-sm-7 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
             <img className="img-fluid w-100" src={splash3} alt="splash3" />
             <h2>GET HELP</h2>
             <p className="mx-3">Need local assistance? We're here to help.</p>
-            <button class="btn btn-link border border-primary">LEARN MORE</button>
+            <Link to="/calendar"><button class="btn btn-link border border-primary">LEARN MORE</button></Link>
           </div>
         </div>
       </div>

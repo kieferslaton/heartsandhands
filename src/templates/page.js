@@ -10,6 +10,9 @@ query ($id: ID!) {
       page(id: $id){
         title
         content
+        featuredImage {
+          sourceUrl
+        }
       }
     }
   }
@@ -20,8 +23,23 @@ const Page = ({data}) => {
     return(
     <Layout>
       <SEO title={page.title} />
-    <div>
-        <div dangerouslySetInnerHTML={{__html: page.content}} />
+      <div className="container-fluid p-0 hero" style={{backgroundImage: `url(${page.featuredImage.sourceUrl})`}}>
+          <div className="row h-100 align-items-center overlay m-0">
+            <div className="col-12 text-center align-items-center">
+              <p
+                className="hero-text font-weight-bold"
+              >
+                {page.title}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="container-fluid">
+        <div className="row justify-content-center">
+    <div className="col-12 col-md-8">
+        <div className="my-4 mx-2 content" dangerouslySetInnerHTML={{__html: page.content}} />
+    </div>
+    </div>
     </div>
     </Layout>
     )

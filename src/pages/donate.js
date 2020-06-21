@@ -75,8 +75,7 @@ const DonateForm = props => {
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
               <p
-                className="font-weight-bold"
-                style={{ color: "white", fontSize: 85, lineHeight: '70px' }}
+                className="hero-text font-weight-bold"
               >
                 Donate
               </p>
@@ -90,22 +89,22 @@ const DonateForm = props => {
               </div>
           </div>
           <div className="row justify-content-center">
-            <div className="col-11 col-md-6 text-center border border-dark py-4 rounded-lg">
+            <div className="col-11 col-md-6 col-xl-4 text-center border border-dark py-4 rounded-lg">
                 <p className="font-weight-bold m-1">Select a Donation Amount</p>
                 <p className="m-1">You will be redirected to Stripe to finish payment processing.</p>
                 <div className="my-2">
-              <button className={`btn donate-btn m-2 ${button === 'five' ? 'donate-btn-active' : ''}`} id="five" onClick={selectButton}>
+              <button className={`btn donate-btn m-1 m-sm-2 ${button === 'five' ? 'donate-btn-active' : ''}`} id="five" onClick={selectButton}>
                 $5
               </button>
-              <button className={`btn donate-btn m-2 ${button === 'ten' ? 'donate-btn-active' : ''}`} id="ten" onClick={selectButton}>
+              <button className={`btn donate-btn m-1 m-sm-2 ${button === 'ten' ? 'donate-btn-active' : ''}`} id="ten" onClick={selectButton}>
                 $10
               </button>
-              <button className={`btn donate-btn m-2 ${button === 'twenty' ? 'donate-btn-active' : ''}`} id="twenty" onClick={selectButton}>
+              <button className={`btn donate-btn m-1 m-sm-2 ${button === 'twenty' ? 'donate-btn-active' : ''}`} id="twenty" onClick={selectButton}>
                 $20
               </button>
               <br />
               <br />
-              <button className={`btn toggle-btn rdl border-right m-0 ${recurring ? '' : 'toggle-btn-active'}`} onClick={() => setRecurring(false)}>One-Time</button>
+              <button className={`btn toggle-btn rdl m-0 ${recurring ? '' : 'toggle-btn-active'}`} onClick={() => setRecurring(false)}>One-Time</button>
               <button className={`btn toggle-btn rdr m-0 ${recurring ? 'toggle-btn-active' : ''}`} onClick={() => setRecurring(true)}>Monthly</button>
               <br />
               <br />

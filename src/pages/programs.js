@@ -60,8 +60,7 @@ const Programs = () => {
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
               <p
-                className="font-weight-bold"
-                style={{ color: "white", "font-size": 85, "line-height": 70 }}
+                className="font-weight-bold hero-text"
               >
                 Programs
               </p>
@@ -102,8 +101,7 @@ const Programs = () => {
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
               <p
-                className="font-weight-bold"
-                style={{ color: "white", "font-size": 85, "line-height": 70 }}
+                className="font-weight-bold hero-text"
               >
                 Programs
               </p>

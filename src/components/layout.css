@@ -633,6 +633,11 @@ pre tt:after {
   font-size: 1em;
 }
 
+#covid-banner button {
+  line-height: 1.2em;
+  font-weight: 400 !important;
+}
+
 .icon-bar {
   width: 22px;
   height: 2px;
@@ -693,19 +698,33 @@ pre tt:after {
 #program-hero {
   background-image: url('../images/program-hero.png');
   background-size: cover;
-  background-position: center center;
+  background-position: top center;
   height: 400px;
 }
 
 #donate-hero {
   background-image: url('../images/donate-hero.jpg');
   background-size: cover;
+  background-position: center;
+  height: 400px;
+}
+
+#about-hero {
+  background-image: url('../images/donate-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+}
+
+.hero{
+  background-size: cover;
+  background-position: center;
   height: 400px;
 }
 
 .overlay {
   width: 100% !important;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.65);
 }
 
 .cal-cell {
@@ -713,14 +732,17 @@ pre tt:after {
   border: 1px solid black;
 }
 
-.dropup button {
+.dropleft button, .dropright button {
   padding: 5px 10px;
   font-weight: bold;
   font-size: 0.7em;
   white-space: normal;
+  background-color: #f7f7f7;
+  border: 1px solid #292b2c;
+  color: black;
 }
 
-.dropdown-toggle::after{
+.dropdown-toggle:before, .dropdown-toggle:after{
   content: none !important;
 }
 
@@ -729,12 +751,8 @@ pre tt:after {
   font-size: 0.9em;
   border-radius: 0;
   padding: 10px;
-  width: 200%;
+  width: 300%;
   margin: 0 !important;
-  right: auto !important;
-  left: 50% !important;
-  -webkit-transform: translate(-50%, -100%) !important;
-  transform: translate(-50%, -100%) !important;
 }
 
 .dropdown-menu > p {
@@ -763,32 +781,178 @@ pre tt:after {
   height: 75px;
   width: 75px;
   padding: 0;
-  background: gray;
-  color: white;
+  background: #f7f7f7;
+  color: black;
   font-weight: bold;
   font-size: 1.2em;
   border-radius: 75px;
+  border: 1px solid #292b2c;
 }
 
 .donate-btn-active{
-  background: black;
+  background: #292b2c;
+  color: white;
 }
 
 .toggle-btn{
-  background: gray;
-  color: white;
+  background: #f7f7f7;
+  color: black;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1em;
+  border: 1px solid #292b2c;
+  width: 25%;
+  padding: 5px;
 }
 
 .toggle-btn-active{
-  background: black;
+  background: #292b2c;
+  color: white;
 }
 
 .rdl{
-  border-radius: 10px 0 0 10px;
+  border-radius: 5px 0 0 5px;
 }
 
 .rdr{
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 5px 5px 0;
+}
+
+.hero-text{
+  color: white;
+  font-size: 5em;
+  line-height: 1em;
+}
+
+.hero-sub{
+  color: white;
+  font-size: 2em;
+  line-height: 1em;
+}
+
+.footer-address{
+  border-right: 1px solid gray;
+}
+
+.event p {
+  padding: 0;
+  margin: 0.8em 0;
+}
+
+.btn{
+  font-weight: bold;
+}
+
+.event-header{
+  height: 75px;
+  text-align: center;
+  color: white;
+}
+
+.event-bg-1{
+  background: url('../images/event-bg-1.png');
+  background-position: center;
+}
+
+.event-bg-2{
+  background: url('../images/event-bg-2.png');
+  background-position: center;
+}
+
+.event-bg-3{
+  background: url('../images/event-bg-3.png');
+  background-position: center;
+}
+
+.event-content{
+  font-size: 1em;
+}
+
+.inactive-month{
+  color: gray;
+}
+
+.on-hover{
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 768px) {
+  html{
+    font-size: 1.3em;
+  }
+
+  .footer-address{
+    border: none;
+  }
+  .footer-donate:before{
+    content:"";
+    display: inline-block;
+    width: 80%;
+    border-top: 1px solid gray;
+  }
+
+  .event-content{
+    font-size: 0.8em;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .hero-text{
+    font-size: 3.5em;
+  }
+
+  .hero-sub{
+    font-size: 1.5em;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .event-btn{
+    font-size: 0.9em;
+    padding: 0;
+  }
+
+  .toggle-btn{
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .hero-text{
+    font-size: 2.5em;
+  }
+
+  #program-hero, #donate-hero, .hero{
+    height: 300px;
+  }
+
+  #covid-banner  button{
+    font-size: 0.8em;
+  }
+
+  .event-btn{
+    font-size: 0.8em;
+  }
+
+  footer{
+    font-size: 0.8em;
+  }
+
+  .event{
+    font-size: 0.9em;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .toggle-btn{
+    font-size: 1em;
+  }
+  .event-content{
+    font-size: 0.75em;
+  }
+
+  .content{
+    font-size: 0.8em;
+  }
 }
