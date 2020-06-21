@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
       <footer>
         <div className="container-fluid border-top border-dark">
           <div style={{'font-size': '1em','line-height': '1em'}} className="row justify-content-center">
-            <div className="col-12 col-md-3 my-md-5 mt-5 mb-3 text-center footer-address">
+            <div className="col-12 col-md-3 my-md-5 mt-3 mb-2 text-center footer-address">
               <p className="font-weight-bold m-2">HEARTS AND HANDS OF BAYTOWN</p>
               <p className="m-2">A ministry of Iglesia Cristo Viene</p>
               <address className="m-2">
@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
               </address>
             </div>
             <div className="col-12 col-md-3 my-md-5 mb-5 text-center footer-donate">
-              <p className="font-weight-bold pt-4 pt-md-0">DONATE</p>
+              <p className="font-weight-bold pt-3 pt-md-0">DONATE</p>
               <p>Every $1 donated provides enough food for 4 meals.</p>
               <Link to="/donate"><button class="btn">DONATE NOW</button></Link>
             </div>
