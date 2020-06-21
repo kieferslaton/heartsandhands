@@ -43,7 +43,7 @@ const Header = (props) => {
            <span class="icon-bar bottom-bar"></span>
          </button>
          <div className="collapse navbar-collapse justify-content-end mx-5" id="navbar">
-           <ul className="navbar-nav text-center">
+           <ul className="navbar-nav text-center mx-auto mx-md-0">
              {items.map(item => (
                <li className="nav-item my-0">
                  <Link className="nav-link" to={item.url} key={item.id}>

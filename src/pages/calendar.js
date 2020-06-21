@@ -9,7 +9,9 @@ import {
   startOfWeek,
   endOfWeek,
   addDays,
-  getMonth
+  isSameDay,
+  getMonth,
+  parse,
 } from "date-fns"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 
@@ -103,10 +105,22 @@ const BigCalendar = props => {
         }
         days.push(
           <div className="col cal-cell">
-            <p className={(getMonth(day) == getMonth(currentMonth)) ? 'active-month' : 'inactive-month'}>{format(day, "d")}</p>
+            <p
+              className={
+                getMonth(day) == getMonth(currentMonth)
+                  ? "active-month"
+                  : "inactive-month"
+              }
+            >
+              {format(day, "d")}
+            </p>
             <div className="text-center">
               {dayEvents.map(event => (
-                <div class={`btn-group mw-100 ${(i <=4 ) ? 'dropright' : 'dropleft'}`}>
+                <div
+                  class={`btn-group mw-100 ${
+                    i <= 4 ? "dropright" : "dropleft"
+                  }`}
+                >
                   <button
                     type="button"
                     class="btn dropdown-toggle mw-100"
@@ -117,7 +131,7 @@ const BigCalendar = props => {
                       : format(new Date(event.start), "p")}
                   </button>
                   <div class="dropdown-menu p-0 m-0">
-                  <div class="card-body event p-0 m-0">
+                    <div class="card-body event p-0 m-0">
                       <div
                         class={`font-weight-bold w-100 m-0 event-header ${
                           i % 3 == 0
@@ -128,29 +142,34 @@ const BigCalendar = props => {
                         }`}
                       >
                         <div class="overlay pt-2 h-100 align-items-center">
-                          <p className="font-weight-bold">{event.title.toUpperCase()}</p>
+                          <p className="font-weight-bold">
+                            {event.title.toUpperCase()}
+                          </p>
                         </div>
                       </div>
                       <div className="event-content px-3">
-                      <p>
-                        <span class="font-weight-bold">Time: </span>
-                        {format(new Date(event.start), "Pp")}-{format(new Date(event.end), "p")}
-                      </p>
-                      <p className={event.location ? "" : "d-none"}>
-                        <span class="font-weight-bold">Location: </span>
-                        <a
-                          href={
-                            event.location
-                              ? "http://maps.google.com/maps?q=" +
-                                event.location.replace(/ /g, "+")
-                              : ""
-                          }
-                          className={event.location ? "" : "d-none"}
-                        >
-                          {event.location}{" "}
-                        </a>
-                      </p>
-                      <p className={event.description ? "" : "d-none"}>{event.description}</p>
+                        <p>
+                          <span class="font-weight-bold">Time: </span>
+                          {format(new Date(event.start), "Pp")}-
+                          {format(new Date(event.end), "p")}
+                        </p>
+                        <p className={event.location ? "" : "d-none"}>
+                          <span class="font-weight-bold">Location: </span>
+                          <a
+                            href={
+                              event.location
+                                ? "http://maps.google.com/maps?q=" +
+                                  event.location.replace(/ /g, "+")
+                                : ""
+                            }
+                            className={event.location ? "" : "d-none"}
+                          >
+                            {event.location}{" "}
+                          </a>
+                        </p>
+                        <p className={event.description ? "" : "d-none"}>
+                          {event.description}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -173,7 +192,10 @@ const BigCalendar = props => {
     <div className="container-fluid my-5">
       <div className="row justify-content-center">
         <div className="col-10">
-          <div style={{fontSize: '1.5em'}} className="header row flex-middle text-center mb-4">
+          <div
+            style={{ fontSize: "1.5em" }}
+            className="header row flex-middle text-center mb-4"
+          >
             <div className="col col-start">
               <FaChevronLeft className="on-hover" onClick={prevMonth} />
             </div>
@@ -194,6 +216,9 @@ const BigCalendar = props => {
 
 const SmallCalendar = props => {
   const [events, setEvents] = useState([])
+  const [currentMonth, setCurrentMonth] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState(new Date())
+  const [currentDayEvents, setCurrentDayEvents] = useState([])
   const width = useWindowSize()
 
   useEffect(() => {
@@ -206,71 +231,149 @@ const SmallCalendar = props => {
     })
   }, [])
 
+  const prevMonth = () => {
+    setCurrentMonth(subMonths(currentMonth, 1))
+  }
+
+  const nextMonth = () => {
+    setCurrentMonth(addMonths(currentMonth, 1))
+  }
+
+  const onDateClick = day => {
+    setSelectedDate(day)
+    let currentEvents = []
+    for (let i = 0; i < events.length; i++) {
+      if (isSameDay(day, new Date(events[i].start))) {
+        currentEvents.push(events[i])
+      }
+    }
+    setCurrentDayEvents(currentEvents)
+  }
+
+  const renderCells = () => {
+    const monthStart = startOfMonth(currentMonth)
+    const monthEnd = endOfMonth(currentMonth)
+    const startDate = startOfWeek(monthStart)
+    const endDate = endOfWeek(monthEnd)
+
+    let day = startDate
+    let days = []
+    let rows = []
+    rows.push(<div className="row justify-content-center">
+        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(day => (
+          <div className='cal-cell-small day-cell mx-0 my-1 p-0'>{day}</div>
+        ))}
+      </div>)
+
+    while (day <= endDate) {
+      for (let i = 0; i < 7; i++) {
+        let dayEvents = []
+        for (let j = 0; j < events.length; j++) {
+          let formatStart = format(new Date(events[j].start), "P")
+          if (formatStart === format(day, "P")) {
+            dayEvents.push(events[j])
+          }
+        }
+        const cloneDay = day
+        days.push(
+          <div
+            onClick={() => onDateClick(cloneDay)}
+            className={`cal-cell-small mx-0 my-1 p-0 ${
+              isSameDay(day, selectedDate) ? "selected-day" : ""
+            }`}
+          >
+            <p
+              className={`m-0 p-0 ${
+                getMonth(day) == getMonth(currentMonth)
+                  ? "active-month"
+                  : "inactive-month"
+              }`}
+            >
+              {format(day, "d")}
+            </p>
+            {dayEvents.map(event => (
+              <div className="cal-dot"></div>
+            ))}
+          </div>
+        )
+        day = addDays(day, 1)
+        dayEvents = []
+      }
+      rows.push(<div className="row justify-content-center">{days}</div>)
+      days = []
+    }
+
+    return <div className="body">{rows}</div>
+  }
+
   return (
     <>
-      <div className="row justify-content-center mb-5">
-        <div className="col-12 col-sm-10 col-md-8">
-          <div className="container-fluid">
-            <div className="row justify-content-center my-2">
-              <p style={{ fontSize: "1.3em", fontWeight: "bold" }}>
-                UPCOMING EVENTS
-              </p>
+      <div className="container-fluid my-3 small-cal">
+        <div className="row justify-content-center">
+          <div className="col-12">
+            <div
+              className="header row flex-middle text-center mb-4"
+            >
+              <div className="col col-start">
+                <FaChevronLeft className="on-hover" onClick={prevMonth} />
+              </div>
+              <div className="col col-center font-weight-bold ">
+                {format(currentMonth, "MMMM")}
+              </div>
+              <div className="col col-end">
+                <FaChevronRight className="on-hover" onClick={nextMonth} />
+              </div>
             </div>
-            {events.map((event, i) => {
-              return (
-                <>
-                  <div class="card-header border">
-                    <button
-                      style={{ color: "black" }}
-                      class="btn w-100 event-btn"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target={"#collapse" + i}
+            {renderCells()}
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid p-0 mb-3">
+        <div className="row justify-content-center p-0 m-0">
+          <div className="col-12 p-0 m-0">
+            {currentDayEvents.map((event, i) => (
+              <div class="card-body event p-0 m-0">
+                <div
+                  class={`font-weight-bold w-100 m-0 event-header ${
+                    i % 3 == 0
+                      ? "event-bg-1"
+                      : i % 3 == 1
+                      ? "event-bg-2"
+                      : "event-bg-3"
+                  }`}
+                >
+                  <div class="overlay pt-2 h-100 align-items-center">
+                    <p className="font-weight-bold">
+                      {event.title.toUpperCase()}
+                    </p>
+                  </div>
+                </div>
+                <div className="event-content px-3">
+                  <p>
+                    <span class="font-weight-bold">Time: </span>
+                    {format(new Date(event.start), "Pp")}-
+                    {format(new Date(event.end), "p")}
+                  </p>
+                  <p className={event.location ? "" : "d-none"}>
+                    <span class="font-weight-bold">Location: </span>
+                    <a
+                      href={
+                        event.location
+                          ? "http://maps.google.com/maps?q=" +
+                            event.location.replace(/ /g, "+")
+                          : ""
+                      }
+                      className={event.location ? "" : "d-none"}
                     >
-                      {event.title} | {format(new Date(event.start), "Pp")}
-                    </button>
-                  </div>
-                  <div class="collapse border" id={"collapse" + i}>
-                    <div class="card-body event p-0 m-0">
-                      <div
-                        class={`font-weight-bold w-100 m-0 event-header ${
-                          i % 3 == 0
-                            ? "event-bg-1"
-                            : i % 3 == 1
-                            ? "event-bg-2"
-                            : "event-bg-3"
-                        }`}
-                      >
-                        <div class="overlay pt-2 h-100 align-items-center">
-                          <p className="font-weight-bold">{event.title.toUpperCase()}</p>
-                        </div>
-                      </div>
-                      <div className="event-content px-3">
-                      <p>
-                        <span class="font-weight-bold">Time: </span>
-                        {format(new Date(event.start), "Pp")}-{format(new Date(event.end), "p")}
-                      </p>
-                      <p className={event.location ? "" : "d-none"}>
-                        <span class="font-weight-bold">Location: </span>
-                        <a
-                          href={
-                            event.location
-                              ? "http://maps.google.com/maps?q=" +
-                                event.location.replace(/ /g, "+")
-                              : ""
-                          }
-                          className={event.location ? "" : "d-none"}
-                        >
-                          {event.location}{" "}
-                        </a>
-                      </p>
-                      <p className={event.description ? "" : "d-none"}>{event.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )
-            })}
+                      {event.location}{" "}
+                    </a>
+                  </p>
+                  <p className={event.description ? "" : "d-none"}>
+                    {event.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

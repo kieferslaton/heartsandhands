@@ -899,6 +899,38 @@ a{
   background: none;
 }
 
+.cal-cell-small{
+  font-size: 0.7em;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  padding-top: 5px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.selected-day{
+  background-color: var(--accent);
+  color: white;
+}
+
+.cal-dot{
+  margin: 0 auto;
+  background-color: var(--accent);
+  height: 10px;
+  width: 10px;
+  border-radius: 5px; 
+}
+
+.selected-day > .cal-dot{
+  background-color: white;
+}
+
+.day-cell{
+  cursor: default;
+}
+
+
 
 @media only screen and (max-width: 768px) {
   html{
@@ -967,6 +999,7 @@ a{
   .event{
     font-size: 0.9em;
   }
+
 }
 
 @media only screen and (max-width: 350px) {
@@ -979,5 +1012,10 @@ a{
 
   .content{
     font-size: 0.8em;
+  }
+
+  .cal-cell-small{
+    width: 40px;
+    height: 40px;
   }
 }
