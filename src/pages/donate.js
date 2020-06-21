@@ -108,8 +108,8 @@ const DonateForm = props => {
               <button className={`btn toggle-btn rdr m-0 ${recurring ? 'toggle-btn-active' : ''}`} onClick={() => setRecurring(true)}>Monthly</button>
               <br />
               <br />
-              <button className="btn btn-dark w-50" onClick={handleSubmit}>
-                  Go
+              <button className="btn w-50" onClick={handleSubmit}>
+                  GO
               </button>
               </div>
             </div>

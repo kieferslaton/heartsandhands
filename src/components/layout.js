@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
             <div className="col-12 col-md-3 my-md-5 mb-5 text-center footer-donate">
               <p className="font-weight-bold pt-4 pt-md-0">DONATE</p>
               <p>Every $1 donated provides enough food for 4 meals.</p>
-              <Link to="/donate"><button class="btn btn-dark">DONATE NOW</button></Link>
+              <Link to="/donate"><button class="btn">DONATE NOW</button></Link>
             </div>
           </div>
           <div className="row">

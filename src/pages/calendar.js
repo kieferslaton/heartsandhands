@@ -109,7 +109,7 @@ const BigCalendar = props => {
                 <div class={`btn-group mw-100 ${(i <=4 ) ? 'dropright' : 'dropleft'}`}>
                   <button
                     type="button"
-                    class="btn btn-secondary dropdown-toggle mw-100"
+                    class="btn dropdown-toggle mw-100"
                     data-toggle="dropdown"
                   >
                     {width > 1200

@@ -1,3 +1,7 @@
+:root {
+  --accent: #339999;
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -634,8 +638,14 @@ pre tt:after {
 }
 
 #covid-banner button {
+  color: white;
+  border: none;
   line-height: 1.2em;
   font-weight: 400 !important;
+}
+
+#covid-banner button:hover, #covid-banner button:active {
+  background: none;
 }
 
 .icon-bar {
@@ -737,9 +747,6 @@ pre tt:after {
   font-weight: bold;
   font-size: 0.7em;
   white-space: normal;
-  background-color: #f7f7f7;
-  border: 1px solid #292b2c;
-  color: black;
 }
 
 .dropdown-toggle:before, .dropdown-toggle:after{
@@ -781,32 +788,27 @@ pre tt:after {
   height: 75px;
   width: 75px;
   padding: 0;
-  background: #f7f7f7;
-  color: black;
   font-weight: bold;
   font-size: 1.2em;
   border-radius: 75px;
-  border: 1px solid #292b2c;
 }
 
 .donate-btn-active{
-  background: #292b2c;
-  color: white;
+  background: var(--accent);
+  color: white !important;
 }
 
+
+
 .toggle-btn{
-  background: #f7f7f7;
-  color: black;
-  font-weight: bold;
   font-size: 1em;
-  border: 1px solid #292b2c;
   width: 25%;
   padding: 5px;
 }
 
 .toggle-btn-active{
-  background: #292b2c;
-  color: white;
+  background: var(--accent);
+  color: white !important;
 }
 
 .rdl{
@@ -839,7 +841,21 @@ pre tt:after {
 }
 
 .btn{
-  font-weight: bold;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+a{
+  color: var(--accent);
+}
+
+.btn:hover, .btn:active{
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn:focus{
+  outline: none !important;
 }
 
 .event-header{
@@ -927,7 +943,8 @@ pre tt:after {
     height: 300px;
   }
 
-  #covid-banner  button{
+  #covid-banner 
+   button{
     font-size: 0.8em;
   }
 
