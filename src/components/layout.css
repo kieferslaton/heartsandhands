@@ -891,6 +891,14 @@ a{
   cursor: pointer;
 }
 
+.event-btn{
+  border: none;
+}
+
+.event-btn:hover, .event-btn:active{
+  background: none;
+}
+
 
 @media only screen and (max-width: 768px) {
   html{

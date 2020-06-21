@@ -222,7 +222,7 @@ const SmallCalendar = props => {
                   <div class="card-header border">
                     <button
                       style={{ color: "black" }}
-                      class="btn btn-link w-100 event-btn"
+                      class="btn w-100 event-btn"
                       type="button"
                       data-toggle="collapse"
                       data-target={"#collapse" + i}
