@@ -217,7 +217,7 @@ const BigCalendar = props => {
 const SmallCalendar = props => {
   const [events, setEvents] = useState([])
   const [currentMonth, setCurrentMonth] = useState(new Date())
-  const [selectedDate, setSelectedDate] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState()
   const [currentDayEvents, setCurrentDayEvents] = useState([])
   const width = useWindowSize()
 
