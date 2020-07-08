@@ -35,8 +35,8 @@ const Header = (props) => {
       <div id="covid-banner" className="bg-dark py-1 mb-1 text-center">
           <Link to="/covid-19-response"><button class="btn btn-dark w-100 text-uppercase py-0 px-1">Click here to see how the food bank is responding to COVID-19.</button></Link>
       </div>
-      <nav className="navbar navbar-light navbar-expand-md m-0 px-0 py-1">
-         <Link to="/"><a className="navbar-brand text-center mx-1 mx-lg-5"><img className="m-0" style={{'height': 60}} src={logo} /></a></Link>
+      <nav className="navbar navbar-expand-md m-0 px-0 py-1">
+         <Link to="/"><a href="#" className="navbar-brand text-center mx-1 mx-lg-5"><img className="m-0" style={{'height': 60}} src={logo} alt="logo"/></a></Link>
          <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar">
            <span class="icon-bar top-bar"></span>
            <span class="icon-bar middle-bar"></span>
@@ -63,7 +63,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+  siteTitle: title,
 }
 }
 

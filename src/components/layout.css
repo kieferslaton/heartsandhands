@@ -632,11 +632,6 @@ pre tt:after {
   font-weight: 300
 }
 
-#covid-banner{
-  color: white;
-  font-size: 1em;
-}
-
 #covid-banner button {
   color: white;
   border: none;

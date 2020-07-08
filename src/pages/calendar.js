@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
 import {
   format,
   subMonths,
@@ -11,12 +10,10 @@ import {
   addDays,
   isSameDay,
   getMonth,
-  parse,
 } from "date-fns"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 import { getEvents } from "../gcal"
 
@@ -107,7 +104,7 @@ const BigCalendar = props => {
           <div className="col cal-cell">
             <p
               className={
-                getMonth(day) == getMonth(currentMonth)
+                getMonth(day) === getMonth(currentMonth)
                   ? "active-month"
                   : "inactive-month"
               }
@@ -134,9 +131,9 @@ const BigCalendar = props => {
                     <div class="card-body event p-0 m-0">
                       <div
                         class={`font-weight-bold w-100 m-0 event-header ${
-                          i % 3 == 0
+                          i % 3 === 0
                             ? "event-bg-1"
-                            : i % 3 == 1
+                            : i % 3 === 1
                             ? "event-bg-2"
                             : "event-bg-3"
                         }`}
@@ -284,7 +281,7 @@ const SmallCalendar = props => {
           >
             <p
               className={`m-0 p-0 ${
-                getMonth(day) == getMonth(currentMonth)
+                getMonth(day) === getMonth(currentMonth)
                   ? "active-month"
                   : "inactive-month"
               }`}
@@ -335,9 +332,9 @@ const SmallCalendar = props => {
               <div class="card-body event p-0 m-0">
                 <div
                   class={`font-weight-bold w-100 m-0 event-header ${
-                    i % 3 == 0
+                    i % 3 === 0
                       ? "event-bg-1"
-                      : i % 3 == 1
+                      : i % 3 === 1
                       ? "event-bg-2"
                       : "event-bg-3"
                   }`}

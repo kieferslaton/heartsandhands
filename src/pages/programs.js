@@ -86,6 +86,7 @@ const Programs = () => {
                 <img
                   className="img-fluid"
                   src={program.featuredImage.sourceUrl}
+                  alt='featured'
                 />
               </div>
             </div>
@@ -115,6 +116,7 @@ const Programs = () => {
                 <img
                   className="img-fluid"
                   src={program.featuredImage.sourceUrl}
+                  alt='featured'
                 />
               </div>
               <div className="col-11">
