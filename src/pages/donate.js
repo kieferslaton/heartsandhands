@@ -27,25 +27,25 @@ const DonateForm = props => {
       paymentMode = "subscription"
       switch (button) {
         case "five":
-          priceUrl = "price_1GvmQvGJc8kSpHFEAy7oHKGz"
+          priceUrl = process.env.GATSBY_FIVE_RECURRING_URL
           break
         case "ten":
-          priceUrl = "price_1GvmSCGJc8kSpHFEkYUUdg0Z"
+          priceUrl = process.env.GATSBY_TEN_RECURRING_URL
           break
         case "twenty":
-          priceUrl = "price_1GvmSdGJc8kSpHFEQCan7Nbu"
+          priceUrl = process.env.GATSBY_TWENTY_RECURRING_URL
       }
     } else {
       paymentMode = "payment"
       switch (button) {
         case "five":
-          priceUrl = "price_1GvlatGJc8kSpHFEWeGppmrw"
+          priceUrl = process.env.GATSBY_FIVE_ONCE_URL
           break
         case "ten":
-          priceUrl = "price_1Gvlr8GJc8kSpHFEJSGWEvCW"
+          priceUrl = process.env.GATSBY_TEN_ONCE_URL
           break
         case "twenty":
-          priceUrl = "price_1GvlrjGJc8kSpHFEDHD5xe5f"
+          priceUrl = process.env.GATSBY_TWENTY_ONCE_URL
       }
     }
 
