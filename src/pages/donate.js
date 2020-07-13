@@ -3,10 +3,9 @@ import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 
 import Layout from "../components/layout"
-import api from '../apikeys'
 
 const stripePromise = loadStripe(
-    api.STRIPE_API
+    process.env.GATSBY_STRIPE_API
 )
 
 const DonateForm = props => {
