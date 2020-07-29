@@ -69,8 +69,8 @@ const Programs = () => {
         </div>
         <div className="container-fluid">
           {programs.map(program => (
-            <div className="row justify-content-center program my-4">
-              <div className="col-7 col-lg-6 my-auto">
+            <div className="row justify-content-center program my-5">
+              <div className="col-7 col-lg-6 my-auto pb-5">
                 <p
                   style={{ "font-size": "1.5em" }}
                   className="font-weight-bold"
@@ -82,7 +82,7 @@ const Programs = () => {
                   dangerouslySetInnerHTML={{ __html: program.content }}
                 />
               </div>
-              <div className="col-4 col-lg-3 my-auto">
+              <div className="col-4 col-lg-3 my-auto pb-5">
                 <img
                   className="img-fluid"
                   src={program.featuredImage.sourceUrl}
@@ -112,7 +112,7 @@ const Programs = () => {
         <div className="container-fluid">
           {programs.map(program => (
             <div className="row justify-content-center program my-4">
-              <div className="col-8">
+              <div className="col-8 pb-3 text-center">
                 <img
                   className="img-fluid"
                   src={program.featuredImage.sourceUrl}

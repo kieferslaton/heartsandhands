@@ -20,7 +20,7 @@ const IndexPage = () => (
             No one should have to go hungry.
           </p>
           <p className="hero-sub">
-            HHB Fresh Market provides food for families in a dignified and
+            Hearts and Hands of Baytown provides food for families in a dignified and
             supportive manner.
           </p>
         </div>
@@ -39,7 +39,7 @@ const IndexPage = () => (
         <div className="row justify-content-center overlay m-0">
           <div className="col-10 col-sm-7 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
             <img className="img-fluid w-100" src={splash1} alt="splash1" />
-            <h2>GIVE</h2>
+            <h2 className="mt-2">GIVE</h2>
             <p className="mx-3">
               Make a lasting impact. Donate today to the fight against hunger.
             </p>
@@ -47,7 +47,7 @@ const IndexPage = () => (
           </div>
           <div className="col-10 col-sm-7 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
             <img className="img-fluid w-100" src={splash2} alt="splash2" />
-            <h2>VOLUNTEER</h2>
+            <h2 className="mt-2">VOLUNTEER</h2>
             <p className="mx-3">
               Find out how you can help us get food to the people who need it.
             </p>
@@ -55,7 +55,7 @@ const IndexPage = () => (
           </div>
           <div className="col-10 col-sm-7 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
             <img className="img-fluid w-100" src={splash3} alt="splash3" />
-            <h2>GET HELP</h2>
+            <h2 className="mt-2">GET HELP</h2>
             <p className="mx-3">Need local assistance? We're here to help.</p>
             <Link to="/programs"><button class="btn">LEARN MORE</button></Link>
           </div>
