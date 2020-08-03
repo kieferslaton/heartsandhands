@@ -14,6 +14,10 @@ $accent2: #FCAB5F;
   font-weight: 300
 }
 
+em{
+  font-weight: bold;
+}
+
 #covid-banner button {
   color: white;
   border: none;
@@ -91,9 +95,9 @@ footer{
 }
 
 #program-hero {
-  background-image: url('../images/program-hero.png');
+  background-image: url('../images/program-hero.jpg');
   background-size: cover;
-  background-position: top center;
+  background-position: center center;
   height: 400px;
 }
 
@@ -233,6 +237,9 @@ footer{
 a{
   color: $accent;
   &:hover{
+    color: $accent2
+  }
+  &:active{
     color: $accent2
   }
 }
