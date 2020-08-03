@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from 'gatsby'
+import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -14,19 +14,17 @@ const IndexPage = () => (
     <div className="container-fluid p-0 m-0" id="hero">
       <div className="row align-items-center h-100 m-0 p-0 overlay">
         <div className="col-xl-6 col-lg-7 col-md-10 mx-auto mt-3 text-center">
-          <p
-            className="font-weight-bold hero-text"
-          >
+          <p className="font-weight-bold hero-text">
             No one should have to go hungry.
           </p>
           <p className="hero-sub">
-            Hearts and Hands of Baytown provides food for families in a dignified and
-            supportive manner.
+            Hearts and Hands of Baytown provides food for families in a
+            dignified and supportive manner.
           </p>
         </div>
       </div>
-      </div>
-      <div className="container-fluid p-0 m-0">
+    </div>
+    <div className="container-fluid p-0 m-0">
       <div className="row justify-content-center pt-5 pb-4">
         <div className="col-xl-4 col-lg-6 col-md-10 text-center mx-3">
           <p style={{ "font-size": 25 }}>
@@ -43,7 +41,9 @@ const IndexPage = () => (
             <p className="mx-3">
               Make a lasting impact. Donate today to the fight against hunger.
             </p>
-            <Link to="/donate"><button class="btn">LEARN MORE</button></Link>
+            <Link to="/donate">
+              <button class="btn">LEARN MORE</button>
+            </Link>
           </div>
           <div className="col-10 col-sm-7 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
             <img className="img-fluid w-100" src={splash2} alt="splash2" />
@@ -51,13 +51,17 @@ const IndexPage = () => (
             <p className="mx-3">
               Find out how you can help us get food to the people who need it.
             </p>
-            <Link to="/volunteer"><button class="btn">LEARN MORE</button></Link>
+            <Link to="/volunteer">
+              <button class="btn">LEARN MORE</button>
+            </Link>
           </div>
           <div className="col-10 col-sm-7 col-md-3 col-xl-2 text-center p-0 pb-3 my-4 mx-2 splash">
             <img className="img-fluid w-100" src={splash3} alt="splash3" />
             <h2 className="mt-2">GET HELP</h2>
             <p className="mx-3">Need local assistance? We're here to help.</p>
-            <Link to="/programs"><button class="btn">LEARN MORE</button></Link>
+            <Link to="/programs">
+              <button class="btn">LEARN MORE</button>
+            </Link>
           </div>
         </div>
       </div>

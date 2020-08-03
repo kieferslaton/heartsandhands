@@ -256,11 +256,13 @@ const SmallCalendar = props => {
     let day = startDate
     let days = []
     let rows = []
-    rows.push(<div className="row justify-content-center">
-        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(day => (
-          <div className='cal-cell-small day-cell mx-0 my-1 p-0'>{day}</div>
+    rows.push(
+      <div className="row justify-content-center">
+        {["S", "M", "T", "W", "T", "F", "S"].map(day => (
+          <div className="cal-cell-small day-cell mx-0 my-1 p-0">{day}</div>
         ))}
-      </div>)
+      </div>
+    )
 
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
@@ -308,9 +310,7 @@ const SmallCalendar = props => {
       <div className="container-fluid my-3 small-cal">
         <div className="row justify-content-center">
           <div className="col-12">
-            <div
-              className="header row flex-middle text-center mb-4"
-            >
+            <div className="header row flex-middle text-center mb-4">
               <div className="col col-start">
                 <FaChevronLeft className="on-hover" onClick={prevMonth} />
               </div>

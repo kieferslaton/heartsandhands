@@ -59,11 +59,7 @@ const Programs = () => {
         <div className="container-fluid p-0" id="program-hero">
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
-              <p
-                className="font-weight-bold hero-text"
-              >
-                Programs
-              </p>
+              <p className="font-weight-bold hero-text">Programs</p>
             </div>
           </div>
         </div>
@@ -86,7 +82,7 @@ const Programs = () => {
                 <img
                   className="img-fluid"
                   src={program.featuredImage.sourceUrl}
-                  alt='featured'
+                  alt="featured"
                 />
               </div>
             </div>
@@ -101,11 +97,7 @@ const Programs = () => {
         <div className="container-fluid p-0" id="program-hero">
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
-              <p
-                className="font-weight-bold hero-text"
-              >
-                Programs
-              </p>
+              <p className="font-weight-bold hero-text">Programs</p>
             </div>
           </div>
         </div>
@@ -116,7 +108,7 @@ const Programs = () => {
                 <img
                   className="img-fluid"
                   src={program.featuredImage.sourceUrl}
-                  alt='featured'
+                  alt="featured"
                 />
               </div>
               <div className="col-11">

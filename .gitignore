@@ -67,6 +67,3 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
-
-#API Keys
-src/apikeys.js

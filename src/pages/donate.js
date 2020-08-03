@@ -4,9 +4,7 @@ import { Elements } from "@stripe/react-stripe-js"
 
 import Layout from "../components/layout"
 
-const stripePromise = loadStripe(
-    process.env.GATSBY_STRIPE_API
-)
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_API)
 
 const DonateForm = props => {
   const [button, setButton] = useState("")
