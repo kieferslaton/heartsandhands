@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
               <p>
                 Client Choice Fresh Market -{" "}
                 <a className="footer-link" href="tel:8325978917">
-                  832-597-8917
+                  832-597-8908
                 </a>
               </p>
               <p>
