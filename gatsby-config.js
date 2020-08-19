@@ -6,7 +6,12 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`, 
+      options: {
+        exclude: ['/page-2', '/thank-you', '/covid-19-response']
+      }
+    },
     `gatsby-plugin-sass`, 
     `gatsby-plugin-react-helmet`,
     {
