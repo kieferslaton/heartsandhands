@@ -272,19 +272,8 @@ a{
 }
 
 .btn-highlight{
-  border: 1px solid $accent2;
-  color: $accent2;
-  &:hover{
-    background: $accent2;
-    color: white;
-  }
-  &:active{
-    background: $accent2;
-    color: white;
-  }
-  &:focus{
-    outline: none !important;
-  }
+  color: white;
+  background-color: $accent2;
 }
 
 .event-header{
