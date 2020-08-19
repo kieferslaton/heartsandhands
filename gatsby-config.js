@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://heartsandhandsofbaytown.com`, 
     title: `HHB`,
     description: `Hearts and Hands of Baytown`,
     author: `@gatsbyjs`,
