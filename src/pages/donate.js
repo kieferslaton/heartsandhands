@@ -73,8 +73,12 @@ const DonateForm = props => {
         <div className="container-fluid my-4">
           <div className="row justify-content-center my-1">
             <div className="col-10 col-md-6 text-center my-5">
-              <p style={{ "font-size": 25 }}>
-                HHB runs completely on donations. Offer your help today.
+              <p style={{ "font-size": 20 }}>
+                <strong>Every donation</strong> you make helps us provide critical basic needs to struggling individuals and families, especially now that so many are suffering due to COVID19.
+              </p>
+              <br />
+              <p style={{ "font-size": 20 }}>
+                A portion of your gift also goes toward offsetting some of the costs of operating these programs, without which none of the good work we do would be possible.
               </p>
             </div>
           </div>
