@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     siteUrl: `https://heartsandhandsofbaytown.com`, 
-    title: `HHB`,
-    description: `Hearts and Hands of Baytown`,
+    title: `Hearts and Hands of Baytown`,
+    description: `Hearts and Hands of Baytown Food Pantry`,
     author: `@gatsbyjs`,
   },
   plugins: [
