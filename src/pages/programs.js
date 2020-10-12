@@ -34,20 +34,22 @@ const Programs = () => {
   const width = useWindowSize()
 
   const data = useStaticQuery(graphql`
-    query {
-      wpgraphql {
-        programs {
-          nodes {
-            content
-            id
-            title
-            featuredImage {
+  {
+    wpgraphql {
+      programs {
+        nodes {
+          content
+          id
+          title
+          featuredImage {
+            node {
               sourceUrl
             }
           }
         }
       }
     }
+  }
   `)
 
   const programs = data.wpgraphql.programs.nodes
@@ -80,8 +82,9 @@ const Programs = () => {
               </div>
               <div className="col-4 col-lg-3 my-auto pb-5">
                 <img
+                  style={{maxHeight: 250}}
                   className="img-fluid"
-                  src={program.featuredImage.sourceUrl}
+                  src={program.featuredImage.node.sourceUrl}
                   alt="featured"
                 />
               </div>

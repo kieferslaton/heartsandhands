@@ -11,7 +11,9 @@ query ($id: ID!) {
         title
         content
         featuredImage {
-          sourceUrl
+          node {
+            sourceUrl
+          }
         }
       }
     }
@@ -23,7 +25,7 @@ const Page = ({data}) => {
     return(
     <Layout>
       <SEO title={page.title} />
-      <div className="container-fluid p-0 hero" style={{background: page.featuredImage ? `url(${page.featuredImage.sourceUrl})` : 'black', backgroundSize: 'cover', backgroundPosition: 'center center'}}>
+      <div className="container-fluid p-0 hero" style={{background: page.featuredImage ? `url(${page.featuredImage.node.sourceUrl})` : 'black', backgroundSize: 'cover', backgroundPosition: 'center center'}}>
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
               <p

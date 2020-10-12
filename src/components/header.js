@@ -11,11 +11,11 @@ const Header = props => {
           title
           url
         }
-        menu(id: "bmF2X21lbnU6Mg==") {
+        menu(id: "dGVybToy") {
           menuItems {
             nodes {
               id
-              url
+              path
               label
             }
           }
@@ -24,10 +24,7 @@ const Header = props => {
     }
   `)
   const { title, url } = data.wpgraphql.generalSettings
-  const items = data.wpgraphql.menu.menuItems.nodes.map(item => ({
-    ...item,
-    url: item.url.replace(url, ""),
-  }))
+  const items = data.wpgraphql.menu.menuItems.nodes
 
   return (
     <>
@@ -61,7 +58,7 @@ const Header = props => {
           <ul className="navbar-nav text-center mx-auto mx-md-0">
             {items.map(item => (
               <li key={item.id} className="nav-item my-0">
-                <Link className="nav-link" to={item.url} key={item.id}>
+                <Link className="nav-link" to={item.path} key={item.id}>
                   {item.label}
                 </Link>
               </li>

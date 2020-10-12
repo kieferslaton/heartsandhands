@@ -40,7 +40,7 @@ module.exports = {
       options: {
         typeName: `WPGraphQL`,
         fieldName: `wpgraphql`,
-        url: `http://wordpress.heartsandhandsofbaytown.com/graphql`
+        url: `https://wp.heartsandhandsofbaytown.com/graphql`
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
