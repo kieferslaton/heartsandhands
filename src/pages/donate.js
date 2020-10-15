@@ -26,6 +26,7 @@ const DonateForm = props => {
       switch (button) {
         case "one":
           priceUrl = process.env.GATSBY_ONE_RECURRING_URL
+          break
         case "five":
           priceUrl = process.env.GATSBY_FIVE_RECURRING_URL
           break
@@ -50,6 +51,9 @@ const DonateForm = props => {
     } else {
       paymentMode = "payment"
       switch (button) {
+        case "one":
+          priceUrl = process.env.GATSBY_ONE_ONCE_URL
+          break
         case "five":
           priceUrl = process.env.GATSBY_FIVE_ONCE_URL
           break
@@ -58,6 +62,18 @@ const DonateForm = props => {
           break
         case "twenty":
           priceUrl = process.env.GATSBY_TWENTY_ONCE_URL
+          break
+        case "fifty":
+          priceUrl = process.env.GATSBY_FIFTY_ONCE_URL
+          break
+        case "one-hundred":
+          priceUrl = process.env.GATSBY_ONE_HUNDRED_ONCE_URL
+          break
+        case "five-hundred":
+          priceUrl = process.env.GATSBY_FIVE_HUNDRED_ONCE_URL
+          break
+        case "one-thousand":
+          priceUrl = process.env.GATSBY_ONE_THOUSAND_ONCE_URL
       }
     }
 
