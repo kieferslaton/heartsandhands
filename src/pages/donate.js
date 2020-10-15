@@ -24,6 +24,8 @@ const DonateForm = props => {
     if (recurring) {
       paymentMode = "subscription"
       switch (button) {
+        case "one":
+          priceUrl = process.env.GATSBY_ONE_RECURRING_URL
         case "five":
           priceUrl = process.env.GATSBY_FIVE_RECURRING_URL
           break
@@ -32,6 +34,18 @@ const DonateForm = props => {
           break
         case "twenty":
           priceUrl = process.env.GATSBY_TWENTY_RECURRING_URL
+          break
+        case "fifty":
+          priceUrl = process.env.GATSBY_FIFTY_RECURRING_URL
+          break
+        case "one-hundred":
+          priceUrl = process.env.GATSBY_ONE_HUNDRED_RECURRING_URL
+          break
+        case "five-hundred":
+          priceUrl = process.env.GATSBY_FIVE_HUNDRED_RECURRING_URL
+          break
+        case "one-thousand":
+          priceUrl = process.env.GATSBY_ONE_THOUSAND_RECURRING_URL
       }
     } else {
       paymentMode = "payment"
@@ -89,6 +103,15 @@ const DonateForm = props => {
                 You will be redirected to Stripe to finish payment processing.
               </p>
               <div className="my-2">
+              <button
+                  className={`btn donate-btn m-1 m-sm-2 ${
+                    button === "one" ? "donate-btn-active" : ""
+                  }`}
+                  id="one"
+                  onClick={selectButton}
+                >
+                  $1
+                </button>
                 <button
                   className={`btn donate-btn m-1 m-sm-2 ${
                     button === "five" ? "donate-btn-active" : ""
@@ -115,6 +138,43 @@ const DonateForm = props => {
                   onClick={selectButton}
                 >
                   $20
+                </button>
+                <br />
+                <button
+                  className={`btn donate-btn m-1 m-sm-2 ${
+                    button === "fifty" ? "donate-btn-active" : ""
+                  }`}
+                  id="fifty"
+                  onClick={selectButton}
+                >
+                  $50
+                </button>
+                <button
+                  className={`btn donate-btn m-1 m-sm-2 ${
+                    button === "one-hundred" ? "donate-btn-active" : ""
+                  }`}
+                  id="one-hundred"
+                  onClick={selectButton}
+                >
+                  $100
+                </button>
+                <button
+                  className={`btn donate-btn m-1 m-sm-2 ${
+                    button === "five-hundred" ? "donate-btn-active" : ""
+                  }`}
+                  id="five-hundred"
+                  onClick={selectButton}
+                >
+                  $500
+                </button>
+                <button
+                  className={`btn donate-btn m-1 m-sm-2 ${
+                    button === "one-thousand" ? "donate-btn-active" : ""
+                  }`}
+                  id="one-thousand"
+                  onClick={selectButton}
+                >
+                  $1000
                 </button>
                 <br />
                 <br />
