@@ -187,6 +187,24 @@ footer{
   color: white !important;
 }
 
+.flex-full{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  margin-bottom: 30px;
+
+  small{
+    margin-top: 5px;
+    width: 100%;
+  }
+}
+
+.captcha{
+  margin: 0 auto
+}
+
 
 
 .toggle-btn{

@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
+import ReCAPTCHA from 'react-google-recaptcha'
 
 import Layout from "../components/layout"
 
@@ -9,10 +10,19 @@ const stripePromise = loadStripe(process.env.GATSBY_STRIPE_API)
 const DonateForm = props => {
   const [button, setButton] = useState("")
   const [recurring, setRecurring] = useState(false)
+  const [isHuman, setIsHuman] = useState(false)
+  const [isHumanError, setIsHumanError] = useState('')
 
   const selectButton = e => {
     setButton(e.target.id)
     console.log(button)
+  }
+
+  const handleRecChange = e => {
+    if(e.length){
+    setIsHuman(e);
+    setIsHumanError('');
+    }
   }
 
   const handleSubmit = async e => {
@@ -77,6 +87,10 @@ const DonateForm = props => {
       }
     }
 
+
+    if(isHuman){
+      setIsHumanError('')
+
     const stripe = await stripePromise
     const { error } = await stripe.redirectToCheckout({
       lineItems: [{ price: priceUrl, quantity: 1 }],
@@ -88,6 +102,10 @@ const DonateForm = props => {
     if (error) {
       console.warn("Error:", error)
     }
+
+  } else {
+    setIsHumanError("Please verify that you're human.")
+  }
   }
 
   return (
@@ -212,6 +230,10 @@ const DonateForm = props => {
                 </button>
                 <br />
                 <br />
+                <div className='flex-full'>
+                <ReCAPTCHA sitekey="6LdcGWgaAAAAANt_RNlRdu-0k9KMVun4HQ67h1jD" onChange={handleRecChange} className="captcha" />
+                <small style={{color: '#ED4337'}}>{isHumanError}</small>
+                </div>
                 <button className="btn w-50" onClick={handleSubmit}>
                   GO
                 </button>
