@@ -1,18 +1,18 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://heartsandhandsofbaytown.com`, 
+    siteUrl: `https://heartsandhandsofbaytown.com`,
     title: `Hearts and Hands of Baytown`,
     description: `Hearts and Hands of Baytown Food Pantry`,
     author: `@gatsbyjs`,
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-sitemap`, 
+      resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: ['/page-2', '/thank-you', '/covid-19-response']
-      }
+        exclude: ["/page-2", "/thank-you", "/covid-19-response"],
+      },
     },
-    `gatsby-plugin-sass`, 
+    `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -39,10 +39,10 @@ module.exports = {
       resolve: `gatsby-source-graphql`,
       options: {
         typeName: `WPGraphQL`,
-        fieldName: `wpgraphql`,
-        url: `https://wp.heartsandhandsofbaytown.com/graphql`
-      }
-    }
+        fieldName: `wpcontent`,
+        url: `https://wp.heartsandhandsofbaytown.com/graphql`,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

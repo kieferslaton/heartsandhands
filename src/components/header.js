@@ -6,7 +6,7 @@ import logo from "../images/Logo.png"
 const Header = props => {
   const data = useStaticQuery(graphql`
     {
-      wpgraphql {
+      wpcontent {
         generalSettings {
           title
           url
@@ -20,26 +20,44 @@ const Header = props => {
             }
           }
         }
+        page(id: "cG9zdDoyNQ==") {
+          page {
+            alertBar
+            hasLink
+            alertBarLink {
+              ... on WPGraphQL_Post {
+                uri
+              }
+              ... on WPGraphQL_Page {
+                uri
+              }
+            }
+          }
+        }
       }
     }
   `)
-  const { title, url } = data.wpgraphql.generalSettings
-  const items = data.wpgraphql.menu.menuItems.nodes
+  const items = data.wpcontent.menu.menuItems.nodes
+  const alert = {
+    text: data.wpcontent.page.page.alertBar,
+    hasLink: data.wpcontent.page.page.hasLink,
+    link: data.wpcontent.page.page.alertBarLink.uri,
+  }
 
   return (
     <>
-      <div id="covid-banner" className="bg-dark py-1 mb-1 text-center">
-        <Link to="/covid-19-response">
-          <button className="btn btn-dark w-100 text-uppercase py-0 px-1">
-            Click here to see how we are responding to COVID-19.
-          </button>
-        </Link>
-      </div>
+      {alert.text && (
+        <div id="covid-banner" className="bg-dark py-1 mb-1 text-center">
+          <Link to={alert.hasLink ? alert.link : "/"}>
+            <button className="btn btn-dark w-100 text-uppercase py-0 px-1">
+              {alert.text}
+            </button>
+          </Link>
+        </div>
+      )}
       <nav className="navbar navbar-expand-md m-0 px-0 py-1">
-        <Link to="/">
-          <a href="#" className="navbar-brand text-center mx-1 mx-lg-5">
-            <img className="m-0" style={{ height: 60 }} src={logo} alt="logo" />
-          </a>
+        <Link to="/" className="navbar-brand text-center mx-1 mx-lg-5">
+          <img className="m-0" style={{ height: 60 }} src={logo} alt="logo" />
         </Link>
         <button
           className="navbar-toggler collapsed"
@@ -58,7 +76,11 @@ const Header = props => {
           <ul className="navbar-nav text-center mx-auto mx-md-0">
             {items.map(item => (
               <li key={item.id} className="nav-item my-0">
-                <Link className="nav-link" to={item.path} key={item.id}>
+                <Link
+                  className="nav-link text-primary"
+                  to={item.path}
+                  key={item.id}
+                >
                   {item.label}
                 </Link>
               </li>

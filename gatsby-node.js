@@ -5,10 +5,10 @@
  */
 
 // You can delete this file if you're not using it
-exports.createPages = async({actions, graphql}) => {
-    const result = await graphql(`
+exports.createPages = async ({ actions, graphql }) => {
+  const result = await graphql(`
     {
-      wpgraphql {
+      wpcontent {
         pages {
           nodes {
             id
@@ -17,27 +17,27 @@ exports.createPages = async({actions, graphql}) => {
         }
       }
     }
-    `);
-  
-    const pages = result.data.wpgraphql.pages.nodes
-  
-    pages.forEach(page => {
-      actions.createPage({
-        path: page.uri,
-        component: require.resolve('./src/templates/page.js'),
-        context: {
-          id: page.id
-        }
-      })
-    })
-  }
+  `)
 
-exports.onCreateWebpackConfig = ({stage, actions, plugins}) => {
+  const pages = result.data.wpcontent.pages.nodes
+
+  pages.forEach(page => {
+    actions.createPage({
+      path: page.uri,
+      component: require.resolve("./src/templates/page.js"),
+      context: {
+        id: page.id,
+      },
+    })
+  })
+}
+
+exports.onCreateWebpackConfig = ({ stage, actions, plugins }) => {
   actions.setWebpackConfig({
     plugins: [
       plugins.define({
-        'global.GENTLY' : false
-      })
-    ]
+        "global.GENTLY": false,
+      }),
+    ],
   })
 }

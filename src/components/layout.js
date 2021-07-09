@@ -26,12 +26,8 @@ const Layout = ({ children }) => {
             className="row justify-content-center"
           >
             <div className="col-12 col-md-6 my-md-4 mt-3 mb-2 text-center footer-address">
-              <p className="font-weight-bold m-2">
-                HEARTS AND HANDS OF BAYTOWN
-              </p>
-              <p className="m-2 font-weight-bold">
-                A ministry of Iglesia Cristo Viene
-              </p>
+              <p className="fw-bold m-2">HEARTS AND HANDS OF BAYTOWN</p>
+              <p className="m-2 fw-bold">A ministry of Iglesia Cristo Viene</p>
               <address className="m-3">
                 307 Cedar Bayou Rd
                 <br />
@@ -49,7 +45,7 @@ const Layout = ({ children }) => {
                   346-715-2209
                 </a>
               </p>
-              <div className="row justify-content-center">
+              <div className="d-flex flex-row justify-content-center">
                 <a href="https://www.facebook.com/Hearts-and-Hands-of-Baytown-1393938504192742/">
                   <FaFacebookF size={20} className="footer-icon" />
                 </a>
@@ -59,10 +55,10 @@ const Layout = ({ children }) => {
               </div>
             </div>
             <div className="col-12 col-md-3 my-md-4 mb-4 text-center footer-donate">
-              <p className="font-weight-bold pt-3 pt-md-0">DONATE</p>
+              <p className="fw-bold pt-3 pt-md-0">DONATE</p>
               <p>Help us make a difference.</p>
               <Link to="/donate">
-                <button className="btn btn-highlight">DONATE NOW</button>
+                <button className="btn btn-secondary">DONATE NOW</button>
               </Link>
             </div>
           </div>

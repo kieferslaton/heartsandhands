@@ -17,37 +17,42 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { getEvents } from "../gcal"
 
-const useWindowSize = () => {
-  const isClient = typeof window === "object"
-  const getSize = () => {
-    return {
-      width: isClient ? window.innerWidth : undefined,
-    }
-  }
-
-  const [windowSize, setWindowSize] = useState(getSize)
+function useWindowSize() {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  })
 
   useEffect(() => {
-    if (!isClient) {
-      return false
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
     }
 
-    const handleResize = () => {
-      setWindowSize(getSize())
-    }
-
+    // Add event listener
     window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
 
-  return windowSize.width
+    // Call handler right away so state gets updated with initial window size
+    handleResize()
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize)
+  }, []) // Empty array ensures that effect is only run on mount
+
+  return windowSize
 }
 
 const BigCalendar = props => {
   const [events, setEvents] = useState([])
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState(new Date())
-  const width = useWindowSize()
+  const width = useWindowSize().width
 
   useEffect(() => {
     getEvents(events => {
@@ -130,7 +135,7 @@ const BigCalendar = props => {
                   <div class="dropdown-menu p-0 m-0">
                     <div class="card-body event p-0 m-0">
                       <div
-                        class={`font-weight-bold w-100 m-0 event-header ${
+                        class={`fw-bold w-100 m-0 event-header ${
                           i % 3 === 0
                             ? "event-bg-1"
                             : i % 3 === 1
@@ -139,19 +144,17 @@ const BigCalendar = props => {
                         }`}
                       >
                         <div class="overlay pt-2 h-100 align-items-center">
-                          <p className="font-weight-bold">
-                            {event.title.toUpperCase()}
-                          </p>
+                          <p className="fw-bold">{event.title.toUpperCase()}</p>
                         </div>
                       </div>
                       <div className="event-content px-3">
                         <p>
-                          <span class="font-weight-bold">Time: </span>
+                          <span class="fw-bold">Time: </span>
                           {format(new Date(event.start), "Pp")}-
                           {format(new Date(event.end), "p")}
                         </p>
                         <p className={event.location ? "" : "d-none"}>
-                          <span class="font-weight-bold">Location: </span>
+                          <span class="fw-bold">Location: </span>
                           <a
                             href={
                               event.location
@@ -196,7 +199,7 @@ const BigCalendar = props => {
             <div className="col col-start">
               <FaChevronLeft className="on-hover" onClick={prevMonth} />
             </div>
-            <div className="col col-center font-weight-bold ">
+            <div className="col col-center fw-bold ">
               {format(currentMonth, "MMMM")}
             </div>
             <div className="col col-end">
@@ -314,7 +317,7 @@ const SmallCalendar = props => {
               <div className="col col-start">
                 <FaChevronLeft className="on-hover" onClick={prevMonth} />
               </div>
-              <div className="col col-center font-weight-bold ">
+              <div className="col col-center fw-bold ">
                 {format(currentMonth, "MMMM")}
               </div>
               <div className="col col-end">
@@ -331,7 +334,7 @@ const SmallCalendar = props => {
             {currentDayEvents.map((event, i) => (
               <div class="card-body event p-0 m-0">
                 <div
-                  class={`font-weight-bold w-100 m-0 event-header ${
+                  class={`fw-bold w-100 m-0 event-header ${
                     i % 3 === 0
                       ? "event-bg-1"
                       : i % 3 === 1
@@ -340,19 +343,17 @@ const SmallCalendar = props => {
                   }`}
                 >
                   <div class="overlay pt-2 h-100 align-items-center">
-                    <p className="font-weight-bold">
-                      {event.title.toUpperCase()}
-                    </p>
+                    <p className="fw-bold">{event.title.toUpperCase()}</p>
                   </div>
                 </div>
                 <div className="event-content px-3">
                   <p>
-                    <span class="font-weight-bold">Time: </span>
+                    <span class="fw-bold">Time: </span>
                     {format(new Date(event.start), "Pp")}-
                     {format(new Date(event.end), "p")}
                   </p>
                   <p className={event.location ? "" : "d-none"}>
-                    <span class="font-weight-bold">Location: </span>
+                    <span class="fw-bold">Location: </span>
                     <a
                       href={
                         event.location

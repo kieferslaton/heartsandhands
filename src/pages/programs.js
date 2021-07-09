@@ -4,55 +4,60 @@ import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const useWindowSize = () => {
-  const isClient = typeof window === "object"
-  const getSize = () => {
-    return {
-      width: isClient ? window.innerWidth : undefined,
-    }
-  }
-
-  const [windowSize, setWindowSize] = useState(getSize)
+function useWindowSize() {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  })
 
   useEffect(() => {
-    if (!isClient) {
-      return false
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
     }
 
-    const handleResize = () => {
-      setWindowSize(getSize())
-    }
-
+    // Add event listener
     window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
 
-  return windowSize.width
+    // Call handler right away so state gets updated with initial window size
+    handleResize()
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize)
+  }, []) // Empty array ensures that effect is only run on mount
+
+  return windowSize
 }
 
 const Programs = () => {
-  const width = useWindowSize()
+  const width = useWindowSize().width
 
   const data = useStaticQuery(graphql`
-  {
-    wpgraphql {
-      programs {
-        nodes {
-          content
-          id
-          title
-          featuredImage {
-            node {
-              sourceUrl
+    {
+      wpcontent {
+        programs {
+          nodes {
+            content
+            id
+            title
+            featuredImage {
+              node {
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-  }
   `)
 
-  const programs = data.wpgraphql.programs.nodes
+  const programs = data.wpcontent.programs.nodes
 
   if (width > 800) {
     return (
@@ -61,7 +66,7 @@ const Programs = () => {
         <div className="container-fluid p-0" id="program-hero">
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
-              <p className="font-weight-bold hero-text">Programs</p>
+              <p className="fw-bold hero-text">Programs</p>
             </div>
           </div>
         </div>
@@ -69,10 +74,7 @@ const Programs = () => {
           {programs.map(program => (
             <div className="row justify-content-center program my-5">
               <div className="col-7 col-lg-6 my-auto pb-5">
-                <p
-                  style={{ "font-size": "1.5em" }}
-                  className="font-weight-bold"
-                >
+                <p style={{ "font-size": "1.5em" }} className="fw-bold">
                   {program.title}
                 </p>
                 <div
@@ -82,7 +84,7 @@ const Programs = () => {
               </div>
               <div className="col-4 col-lg-3 my-auto pb-5">
                 <img
-                  style={{maxHeight: 250}}
+                  style={{ maxHeight: 250 }}
                   className="img-fluid"
                   src={program.featuredImage.node.sourceUrl}
                   alt="featured"
@@ -100,7 +102,7 @@ const Programs = () => {
         <div className="container-fluid p-0" id="program-hero">
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
-              <p className="font-weight-bold hero-text">Programs</p>
+              <p className="fw-bold hero-text">Programs</p>
             </div>
           </div>
         </div>
@@ -115,10 +117,7 @@ const Programs = () => {
                 />
               </div>
               <div className="col-11">
-                <p
-                  style={{ "font-size": "1.5em" }}
-                  className="font-weight-bold"
-                >
+                <p style={{ "font-size": "1.5em" }} className="fw-bold">
                   {program.title}
                 </p>
                 <div

@@ -1,5 +1,5 @@
 $accent: #339999;
-$accent2: #FCAB5F;
+$accent2: #fcab5f;
 
 @media only screen and (max-width: 480px) {
   html {
@@ -7,14 +7,14 @@ $accent2: #FCAB5F;
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
 
-*{
-  font-family: 'Roboto';
-  font-weight: 300
+* {
+  font-family: "Roboto";
+  font-weight: 300;
 }
 
-em{
+em {
   font-weight: bold;
 }
 
@@ -25,14 +25,15 @@ em{
   font-weight: 400 !important;
 }
 
-#covid-banner button:hover, #covid-banner button:active {
+#covid-banner button:hover,
+#covid-banner button:active {
   background: none;
 }
 
 .icon-bar {
   width: 22px;
   height: 2px;
-  background-color: #B6b6b6;
+  background-color: #b6b6b6;
   display: block;
   transition: all 0.2s;
   margin-top: 4px;
@@ -44,78 +45,78 @@ em{
   &:focus {
     outline: none !important;
   }
-  .top-bar{
+  .top-bar {
     transform: rotate(45deg);
     transform-origin: 10% 10%;
   }
-  .middle-bar{
+  .middle-bar {
     opacity: 0;
   }
-  .bottom-bar{
+  .bottom-bar {
     transform: rotate(-45deg);
     transform-origin: 10% 90%;
   }
 }
- 
-.navbar-toggler.collapsed{
-  .top-bar{
-  transform: rotate(0);
+
+.navbar-toggler.collapsed {
+  .top-bar {
+    transform: rotate(0);
   }
-  .middle-bar{
+  .middle-bar {
     opacity: 1;
   }
-  .bottom-bar{
+  .bottom-bar {
     transform: rotate(0);
   }
 }
 
-.divider{
+.divider {
   width: 100%;
   height: 15px;
   background-color: $accent;
 }
 
-footer{
+footer {
   background: #292b2c;
   color: white;
   font-size: 0.9em;
 }
 
 #hero {
-  background-image: url('../images/hero.jpg');
+  background-image: url("../images/hero.jpg");
   background-size: cover;
   background-position: center center;
   height: 500px;
 }
 
 #hero2 {
-  background-image: url('../images/hero2.png');
+  background-image: url("../images/hero2.png");
   background-size: cover;
   background-position: center center;
 }
 
 #program-hero {
-  background-image: url('../images/program-hero.jpg');
+  background-image: url("../images/program-hero.jpg");
   background-size: cover;
   background-position: center center;
   height: 400px;
 }
 
 #donate-hero {
-  background-image: url('../images/donate-hero.jpg');
+  background-image: url("../images/donate-hero.jpg");
   background-size: cover;
   background-position: center;
   height: 400px;
 }
 
 #about-hero {
-  background-image: url('../images/donate-hero.jpg');
+  background-image: url("../images/donate-hero.jpg");
   background-size: cover;
   background-position: center;
   height: 400px;
 }
 
-.hero{
+.hero {
   background-size: cover;
   background-position: center;
   height: 400px;
@@ -123,7 +124,7 @@ footer{
 
 .overlay {
   width: 100% !important;
-  background: rgba(0,0,0,0.65);
+  background: rgba(0, 0, 0, 0.65);
 }
 
 .cal-cell {
@@ -131,18 +132,20 @@ footer{
   border: 1px solid black;
 }
 
-.dropleft button, .dropright button {
+.dropleft button,
+.dropright button {
   padding: 5px 10px;
   font-weight: bold;
   font-size: 0.7em;
   white-space: normal;
 }
 
-.dropdown-toggle:before, .dropdown-toggle:after{
+.dropdown-toggle:before,
+.dropdown-toggle:after {
   content: none !important;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   border: 2px solid black;
   font-size: 0.9em;
   border-radius: 0;
@@ -156,24 +159,24 @@ footer{
   margin: 0;
 }
 
-.splash{
+.splash {
   background: white;
   border: 1px solid white;
 }
 
-.program:after{
-  content:"";
+.program:after {
+  content: "";
   width: 80%;
   border-bottom: 1px solid gray;
 }
 
-.program:last-child:after{
-  content:"";
+.program:last-child:after {
+  content: "";
   width: 80%;
   border-bottom: none;
 }
 
-.donate-btn{
+.donate-btn {
   height: 75px;
   width: 75px;
   padding: 0;
@@ -182,12 +185,12 @@ footer{
   border-radius: 75px;
 }
 
-.donate-btn-active{
+.donate-btn-active {
   background: $accent;
   color: white !important;
 }
 
-.flex-full{
+.flex-full {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -195,58 +198,56 @@ footer{
   flex-flow: row wrap;
   margin-bottom: 30px;
 
-  small{
+  small {
     margin-top: 5px;
     width: 100%;
   }
 }
 
-.captcha{
-  margin: 0 auto
+.captcha {
+  margin: 0 auto;
 }
 
-
-
-.toggle-btn{
+.toggle-btn {
   font-size: 1em;
   width: 25%;
   padding: 5px;
 }
 
-.toggle-btn-active{
+.toggle-btn-active {
   background: $accent;
   color: white !important;
 }
 
-.rdl{
+.rdl {
   border-radius: 5px 0 0 5px;
 }
 
-.rdr{
+.rdr {
   border-radius: 0 5px 5px 0;
 }
 
-.hero-text{
+.hero-text {
   color: white;
   font-size: 5em;
   line-height: 1em;
 }
 
-.hero-sub{
+.hero-sub {
   color: white;
   font-size: 2em;
   line-height: 1em;
 }
 
-.footer-address{
+.footer-address {
   border-right: 1px solid gray;
 }
 
-.footer-link{
+.footer-link {
   color: $accent2;
 }
 
-.footer-icon{
+.footer-icon {
   margin: 0 5px;
   padding: 7px 0;
   height: 40px;
@@ -254,7 +255,7 @@ footer{
   color: $accent2;
   border: 2px solid $accent2;
   border-radius: 1000px;
-  &:hover{
+  &:hover {
     background-color: $accent2;
     color: #292b2c;
   }
@@ -265,78 +266,80 @@ footer{
   margin: 0.8em 0;
 }
 
-.btn{
+.btn {
   border: 1px solid $accent;
   color: $accent;
 }
 
-a{
+a {
   color: $accent;
-  &:hover{
-    color: $accent2
+  &:hover {
+    color: $accent2;
   }
-  &:active{
-    color: $accent2
+  &:active {
+    color: $accent2;
   }
 }
 
-.btn:hover, .btn:active{
+.btn:hover,
+.btn:active {
   background-color: $accent;
   color: white;
 }
 
-.btn:focus{
+.btn:focus {
   outline: none !important;
 }
 
-.btn-highlight{
+.btn-highlight {
   border: none;
   color: white;
   background-color: $accent2;
 }
 
-.event-header{
+.event-header {
   height: 75px;
   text-align: center;
   color: white;
 }
 
-.event-bg-1{
-  background: url('../images/event-bg-1.png');
+.event-bg-1 {
+  background: url("../images/event-bg-1.png");
   background-position: center;
 }
 
-.event-bg-2{
-  background: url('../images/event-bg-2.png');
+.event-bg-2 {
+  background: url("../images/event-bg-2.png");
   background-position: center;
 }
 
-.event-bg-3{
-  background: url('../images/event-bg-3.png');
+.event-bg-3 {
+  background: url("../images/event-bg-3.png");
   background-position: center;
 }
 
-.event-content{
+.event-content {
   font-size: 1em;
 }
 
-.inactive-month{
+.inactive-month {
   color: gray;
 }
 
-.on-hover{
+.on-hover {
   cursor: pointer;
 }
 
-.event-btn{
+.event-btn {
   border: none;
 }
 
-.event-btn:hover, .event-btn:active{
+.event-btn:hover,
+.event-btn:active {
   background: none;
 }
 
-.cal-cell-small{
+.cal-cell-small {
   font-size: 0.7em;
   text-align: center;
   width: 50px;
@@ -346,113 +349,121 @@ a{
   cursor: pointer;
 }
 
-.selected-day{
+.selected-day {
   background-color: $accent;
   color: white;
 }
 
-.cal-dot{
+.cal-dot {
   margin: 0 auto;
   background-color: $accent;
   height: 10px;
   width: 10px;
-  border-radius: 5px; 
+  border-radius: 5px;
 }
 
-.selected-day > .cal-dot{
+.selected-day > .cal-dot {
   background-color: white;
 }
 
-.day-cell{
+.day-cell {
   cursor: default;
 }
 
-
-
 @media only screen and (max-width: 768px) {
-  html{
+  html {
     font-size: 1.3em;
   }
 
-  .footer-address{
+  .footer-address {
     border: none;
   }
-  .footer-donate:before{
-    content:"";
+  .footer-donate:before {
+    content: "";
     display: inline-block;
     width: 80%;
     border-top: 1px solid gray;
   }
 
-  .event-content{
+  .event-content {
     font-size: 0.8em;
   }
 }
 
-
 @media only screen and (max-width: 600px) {
-  .hero-text{
+  .hero-text {
     font-size: 3.5em;
   }
 
-  .hero-sub{
+  .hero-sub {
     font-size: 1.5em;
   }
 }
 
 @media only screen and (max-width: 500px) {
-  .event-btn{
+  .event-btn {
     font-size: 0.9em;
     padding: 0;
   }
 
-  .toggle-btn{
+  .toggle-btn {
     width: 50%;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .hero-text{
+  .hero-text {
     font-size: 2.5em;
   }
 
-  #program-hero, #donate-hero, .hero{
+  #program-hero,
+  #donate-hero,
+  .hero {
     height: 300px;
   }
 
-  #covid-banner 
-   button{
+  #covid-banner button {
     font-size: 0.8em;
   }
 
-  .event-btn{
+  .event-btn {
     font-size: 0.8em;
   }
 
-  footer{
+  footer {
     font-size: 0.8em;
   }
 
-  .event{
+  .event {
     font-size: 0.9em;
   }
-
 }
 
 @media only screen and (max-width: 350px) {
-  .toggle-btn{
+  .toggle-btn {
     font-size: 1em;
   }
-  .event-content{
+  .event-content {
     font-size: 0.75em;
   }
 
-  .content{
+  .content {
     font-size: 0.8em;
   }
 
-  .cal-cell-small{
+  .cal-cell-small {
     width: 40px;
     height: 40px;
   }
+}
+
+$theme-colors: (
+  "primary": #339999,
+  "secondary": #fcab5f,
+);
+@import "node_modules/bootstrap/scss/bootstrap";
+
+a {
+  color: #339999;
+  text-decoration: none;
 }

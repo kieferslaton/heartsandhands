@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
-import ReCAPTCHA from 'react-google-recaptcha'
+import ReCAPTCHA from "react-google-recaptcha"
 
 import Layout from "../components/layout"
 
@@ -11,7 +11,7 @@ const DonateForm = props => {
   const [button, setButton] = useState("")
   const [recurring, setRecurring] = useState(false)
   const [isHuman, setIsHuman] = useState(false)
-  const [isHumanError, setIsHumanError] = useState('')
+  const [isHumanError, setIsHumanError] = useState("")
 
   const selectButton = e => {
     setButton(e.target.id)
@@ -19,9 +19,9 @@ const DonateForm = props => {
   }
 
   const handleRecChange = e => {
-    if(e.length){
-    setIsHuman(e);
-    setIsHumanError('');
+    if (e.length) {
+      setIsHuman(e)
+      setIsHumanError("")
     }
   }
 
@@ -87,25 +87,23 @@ const DonateForm = props => {
       }
     }
 
+    if (isHuman) {
+      setIsHumanError("")
 
-    if(isHuman){
-      setIsHumanError('')
+      const stripe = await stripePromise
+      const { error } = await stripe.redirectToCheckout({
+        lineItems: [{ price: priceUrl, quantity: 1 }],
+        mode: paymentMode,
+        successUrl: `${window.location.origin}/thank-you/`,
+        cancelUrl: `${window.location.origin}/donate`,
+      })
 
-    const stripe = await stripePromise
-    const { error } = await stripe.redirectToCheckout({
-      lineItems: [{ price: priceUrl, quantity: 1 }],
-      mode: paymentMode,
-      successUrl: `${window.location.origin}/thank-you/`,
-      cancelUrl: `${window.location.origin}/donate`,
-    })
-
-    if (error) {
-      console.warn("Error:", error)
+      if (error) {
+        console.warn("Error:", error)
+      }
+    } else {
+      setIsHumanError("Please verify that you're human.")
     }
-
-  } else {
-    setIsHumanError("Please verify that you're human.")
-  }
   }
 
   return (
@@ -114,7 +112,7 @@ const DonateForm = props => {
         <div className="container-fluid p-0" id="donate-hero">
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
-              <p className="hero-text font-weight-bold">Donate</p>
+              <p className="hero-text fw-bold">Donate</p>
             </div>
           </div>
         </div>
@@ -122,24 +120,28 @@ const DonateForm = props => {
           <div className="row justify-content-center my-1">
             <div className="col-10 col-md-6 text-center my-5">
               <p style={{ "font-size": 20 }}>
-                <strong>Every donation</strong> you make helps us provide critical basic needs to struggling individuals and families, especially now that so many are suffering due to COVID19.
+                <strong>Every donation</strong> you make helps us provide
+                critical basic needs to struggling individuals and families,
+                especially now that so many are suffering due to COVID19.
               </p>
               <br />
               <p style={{ "font-size": 20 }}>
-                A portion of your gift also goes toward offsetting some of the costs of operating these programs, without which none of the good work we do would be possible.
+                A portion of your gift also goes toward offsetting some of the
+                costs of operating these programs, without which none of the
+                good work we do would be possible.
               </p>
             </div>
           </div>
           <div className="row justify-content-center">
             <div className="col-11 col-md-6 col-xl-4 text-center border border-dark py-4 rounded-lg">
-              <p className="font-weight-bold m-1">Select a Donation Amount</p>
+              <p className="fw-bold m-1">Select a Donation Amount</p>
               <p className="m-1">
                 You will be redirected to Stripe to finish payment processing.
               </p>
               <div className="my-2">
-              <button
-                  className={`btn donate-btn m-1 m-sm-2 ${
-                    button === "one" ? "donate-btn-active" : ""
+                <button
+                  className={`btn btn-outline-primary rounded-circle donate-btn m-1 m-sm-2 ${
+                    button === "one" ? "donate-btn-active btn-primary" : ""
                   }`}
                   id="one"
                   onClick={selectButton}
@@ -147,8 +149,8 @@ const DonateForm = props => {
                   $1
                 </button>
                 <button
-                  className={`btn donate-btn m-1 m-sm-2 ${
-                    button === "five" ? "donate-btn-active" : ""
+                  className={`btn btn-outline-primary rounded-circle donate-btn m-1 m-sm-2 ${
+                    button === "five" ? "donate-btn-active btn-primary" : ""
                   }`}
                   id="five"
                   onClick={selectButton}
@@ -156,8 +158,8 @@ const DonateForm = props => {
                   $5
                 </button>
                 <button
-                  className={`btn donate-btn m-1 m-sm-2 ${
-                    button === "ten" ? "donate-btn-active" : ""
+                  className={`btn btn-outline-primary rounded-circle donate-btn m-1 m-sm-2 ${
+                    button === "ten" ? "donate-btn-active btn-primary" : ""
                   }`}
                   id="ten"
                   onClick={selectButton}
@@ -165,8 +167,8 @@ const DonateForm = props => {
                   $10
                 </button>
                 <button
-                  className={`btn donate-btn m-1 m-sm-2 ${
-                    button === "twenty" ? "donate-btn-active" : ""
+                  className={`btn btn-outline-primary rounded-circle donate-btn m-1 m-sm-2 ${
+                    button === "twenty" ? "donate-btn-active btn-primary" : ""
                   }`}
                   id="twenty"
                   onClick={selectButton}
@@ -175,8 +177,8 @@ const DonateForm = props => {
                 </button>
                 <br />
                 <button
-                  className={`btn donate-btn m-1 m-sm-2 ${
-                    button === "fifty" ? "donate-btn-active" : ""
+                  className={`btn btn-outline-primary rounded-circle donate-btn m-1 m-sm-2 ${
+                    button === "fifty" ? "donate-btn-active btn-primary" : ""
                   }`}
                   id="fifty"
                   onClick={selectButton}
@@ -184,8 +186,10 @@ const DonateForm = props => {
                   $50
                 </button>
                 <button
-                  className={`btn donate-btn m-1 m-sm-2 ${
-                    button === "one-hundred" ? "donate-btn-active" : ""
+                  className={`btn btn-outline-primary rounded-circle donate-btn m-1 m-sm-2 ${
+                    button === "one-hundred"
+                      ? "donate-btn-active btn-primary"
+                      : ""
                   }`}
                   id="one-hundred"
                   onClick={selectButton}
@@ -193,8 +197,10 @@ const DonateForm = props => {
                   $100
                 </button>
                 <button
-                  className={`btn donate-btn m-1 m-sm-2 ${
-                    button === "five-hundred" ? "donate-btn-active" : ""
+                  className={`btn btn-outline-primary rounded-circle donate-btn m-1 m-sm-2 ${
+                    button === "five-hundred"
+                      ? "donate-btn-active btn-primary"
+                      : ""
                   }`}
                   id="five-hundred"
                   onClick={selectButton}
@@ -202,8 +208,10 @@ const DonateForm = props => {
                   $500
                 </button>
                 <button
-                  className={`btn donate-btn m-1 m-sm-2 ${
-                    button === "one-thousand" ? "donate-btn-active" : ""
+                  className={`btn btn-outline-primary rounded-circle donate-btn m-1 m-sm-2 ${
+                    button === "one-thousand"
+                      ? "donate-btn-active btn-primary"
+                      : ""
                   }`}
                   id="one-thousand"
                   onClick={selectButton}
@@ -213,16 +221,16 @@ const DonateForm = props => {
                 <br />
                 <br />
                 <button
-                  className={`btn toggle-btn rdl m-0 ${
-                    recurring ? "" : "toggle-btn-active"
+                  className={`btn btn-outline-primary rounded-left m-0 ${
+                    recurring ? "" : "toggle-btn-active btn-primary"
                   }`}
                   onClick={() => setRecurring(false)}
                 >
                   One-Time
                 </button>
                 <button
-                  className={`btn toggle-btn rdr m-0 ${
-                    recurring ? "toggle-btn-active" : ""
+                  className={`btn btn-outline-primary rounded-right m-0 ${
+                    recurring ? "toggle-btn-active btn-primary" : ""
                   }`}
                   onClick={() => setRecurring(true)}
                 >
@@ -230,11 +238,18 @@ const DonateForm = props => {
                 </button>
                 <br />
                 <br />
-                <div className='flex-full'>
-                <ReCAPTCHA sitekey="6LdcGWgaAAAAANt_RNlRdu-0k9KMVun4HQ67h1jD" onChange={handleRecChange} className="captcha" />
-                <small style={{color: '#ED4337'}}>{isHumanError}</small>
+                <div className="flex-full">
+                  <ReCAPTCHA
+                    sitekey="6LdcGWgaAAAAANt_RNlRdu-0k9KMVun4HQ67h1jD"
+                    onChange={handleRecChange}
+                    className="captcha"
+                  />
+                  <small style={{ color: "#ED4337" }}>{isHumanError}</small>
                 </div>
-                <button className="btn w-50" onClick={handleSubmit}>
+                <button
+                  className="btn w-50 btn-outline-primary"
+                  onClick={handleSubmit}
+                >
                   GO
                 </button>
               </div>
