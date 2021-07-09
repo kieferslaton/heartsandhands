@@ -45,6 +45,7 @@ function useWindowSize() {
     return () => window.removeEventListener("resize", handleResize)
   }, []) // Empty array ensures that effect is only run on mount
 
+  console.log(windowSize)
   return windowSize
 }
 
@@ -83,7 +84,7 @@ const BigCalendar = props => {
       )
     }
 
-    return <div className="row">{daysOfWeek}</div>
+    return <div className="d-flex flex-row">{daysOfWeek}</div>
   }
 
   const renderCells = () => {
@@ -181,7 +182,7 @@ const BigCalendar = props => {
         day = addDays(day, 1)
         dayEvents = []
       }
-      rows.push(<div className="row">{days}</div>)
+      rows.push(<div className="d-flex flex-row">{days}</div>)
       days = []
     }
 
@@ -190,7 +191,7 @@ const BigCalendar = props => {
 
   return (
     <div className="container-fluid my-5">
-      <div className="row justify-content-center">
+      <div className="d-flex flex-row justify-content-center">
         <div className="col-10">
           <div
             style={{ fontSize: "1.5em" }}
@@ -260,7 +261,7 @@ const SmallCalendar = props => {
     let days = []
     let rows = []
     rows.push(
-      <div className="row justify-content-center">
+      <div className="d-flex flex-row justify-content-center">
         {["S", "M", "T", "W", "T", "F", "S"].map(day => (
           <div className="cal-cell-small day-cell mx-0 my-1 p-0">{day}</div>
         ))}
@@ -301,7 +302,9 @@ const SmallCalendar = props => {
         day = addDays(day, 1)
         dayEvents = []
       }
-      rows.push(<div className="row justify-content-center">{days}</div>)
+      rows.push(
+        <div className="d-flex flex-row justify-content-center">{days}</div>
+      )
       days = []
     }
 
@@ -311,7 +314,7 @@ const SmallCalendar = props => {
   return (
     <>
       <div className="container-fluid my-3 small-cal">
-        <div className="row justify-content-center">
+        <div className="d-flex flex-row justify-content-center">
           <div className="col-12">
             <div className="header row flex-middle text-center mb-4">
               <div className="col col-start">
@@ -329,7 +332,7 @@ const SmallCalendar = props => {
         </div>
       </div>
       <div className="container-fluid p-0 mb-3">
-        <div className="row justify-content-center p-0 m-0">
+        <div className="d-flex flex-row justify-content-center p-0 m-0">
           <div className="col-12 p-0 m-0">
             {currentDayEvents.map((event, i) => (
               <div class="card-body event p-0 m-0">
@@ -380,7 +383,7 @@ const SmallCalendar = props => {
 }
 
 const Calendar = props => {
-  const width = useWindowSize()
+  const width = useWindowSize().width
 
   if (width > 800) {
     return (
