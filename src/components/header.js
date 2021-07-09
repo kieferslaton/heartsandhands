@@ -62,8 +62,8 @@ const Header = props => {
         <button
           className="navbar-toggler collapsed"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbar"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbar"
         >
           <span className="icon-bar top-bar"></span>
           <span className="icon-bar middle-bar"></span>
