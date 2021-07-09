@@ -9,7 +9,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: ["/page-2", "/thank-you", "/covid-19-response"],
+        excludes: ["/page-2", "/thank-you", "/covid-19-response"],
       },
     },
     `gatsby-plugin-sass`,
