@@ -48,7 +48,10 @@ const Header = props => {
     <>
       {alert.text && (
         <div id="covid-banner" className="bg-dark py-1 mb-1 text-center">
-          <Link to={alert.hasLink ? alert.link : "/"}>
+          <Link
+            to={alert.hasLink ? alert.link : "/"}
+            style={{ pointerEvents: alert.hasLink ? "all" : "none" }}
+          >
             <button className="btn btn-dark w-100 text-uppercase py-0 px-1">
               {alert.text}
             </button>
