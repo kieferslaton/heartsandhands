@@ -45,7 +45,6 @@ function useWindowSize() {
     return () => window.removeEventListener("resize", handleResize)
   }, []) // Empty array ensures that effect is only run on mount
 
-  console.log(windowSize)
   return windowSize
 }
 
@@ -107,7 +106,7 @@ const BigCalendar = props => {
           }
         }
         days.push(
-          <div className="col cal-cell">
+          <div className="col cal-cell" style={{ width: "14.2857143%" }}>
             <p
               className={
                 getMonth(day) === getMonth(currentMonth)
@@ -117,23 +116,24 @@ const BigCalendar = props => {
             >
               {format(day, "d")}
             </p>
-            <div className="text-center">
+            <div className="text-center px-2">
               {dayEvents.map(event => (
                 <div
-                  class={`btn-group mw-100 ${
-                    i <= 4 ? "dropright" : "dropleft"
-                  }`}
+                  class={`btn-group w-100 ${i <= 4 ? "dropend" : "dropstart"}`}
                 >
                   <button
                     type="button"
-                    class="btn dropdown-toggle mw-100"
-                    data-toggle="dropdown"
+                    class="btn dropdown-toggle btn-sm btn-outline-primary"
+                    data-bs-toggle="dropdown"
+                    style={{ whiteSpace: "normal", fontSize: "0.75rem" }}
+                    id={event.id}
+                    type="button"
                   >
-                    {width > 1200
+                    {width > 1600
                       ? event.title + " | " + format(new Date(event.start), "p")
                       : format(new Date(event.start), "p")}
                   </button>
-                  <div class="dropdown-menu p-0 m-0">
+                  <div class="dropdown-menu p-0 m-0" aria-labelledby={event.id}>
                     <div class="card-body event p-0 m-0">
                       <div
                         class={`fw-bold w-100 m-0 event-header ${
