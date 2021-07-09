@@ -168,9 +168,12 @@ const BigCalendar = props => {
                             {event.location}{" "}
                           </a>
                         </p>
-                        <p className={event.description ? "" : "d-none"}>
-                          {event.description}
-                        </p>
+                        <p
+                          className={event.description ? "" : "d-none"}
+                          dangerouslySetInnerHTML={{
+                            __html: event.description,
+                          }}
+                        ></p>
                       </div>
                     </div>
                   </div>
