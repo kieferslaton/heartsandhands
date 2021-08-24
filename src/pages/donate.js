@@ -141,15 +141,6 @@ const DonateForm = props => {
               <div className="my-2">
                 <button
                   className={`btn btn-outline-primary rounded-circle donate-btn m-1 m-sm-2 ${
-                    button === "one" ? "donate-btn-active btn-primary" : ""
-                  }`}
-                  id="one"
-                  onClick={selectButton}
-                >
-                  $1
-                </button>
-                <button
-                  className={`btn btn-outline-primary rounded-circle donate-btn m-1 m-sm-2 ${
                     button === "five" ? "donate-btn-active btn-primary" : ""
                   }`}
                   id="five"
