@@ -11,7 +11,7 @@ export function getEvents(callback) {
     if (!err) {
       const events = []
       JSON.parse(resp.text).items.map(event => {
-        console.log(event.start);
+        console.log(event.created, event.start);
         events.push({
           id: event.id,
           start: event.start.date || event.start.dateTime,
