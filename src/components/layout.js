@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
               </address>
               <p>
                 Client Choice Fresh Market -{" "}
-                <a className="footer-link" href="tel:8325978917">
+                <a className="footer-link" href="tel:8325978908">
                   832-597-8908
                 </a>
               </p>
