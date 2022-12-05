@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { SEO } from "../components/seo"
 
 import splash1 from "../images/splash1.jpg"
 import splash2 from "../images/splash2.jpg"
@@ -10,7 +10,6 @@ import splash3 from "../images/splash3.jpg"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
     <div className="container-fluid p-0 m-0" id="hero">
       <div className="row align-items-center h-100 m-0 p-0 overlay">
         <div className="col-xl-6 col-lg-7 col-md-10 mx-auto mt-3 text-center">
@@ -68,3 +67,5 @@ const IndexPage = () => (
 )
 
 export default IndexPage
+
+export const Head = () => <SEO />

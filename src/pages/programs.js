@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { SEO } from "../components/seo"
 
 function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
@@ -40,16 +40,14 @@ const Programs = () => {
 
   const data = useStaticQuery(graphql`
     {
-      wpcontent {
-        programs {
-          nodes {
-            content
-            id
-            title
-            featuredImage {
-              node {
-                sourceUrl
-              }
+      allWpProgram {
+        nodes {
+          content
+          id
+          title
+          featuredImage {
+            node {
+              sourceUrl
             }
           }
         }
@@ -57,12 +55,11 @@ const Programs = () => {
     }
   `)
 
-  const programs = data.wpcontent.programs.nodes
+  const programs = data.allWpProgram.nodes
 
   if (width > 800) {
     return (
       <Layout>
-        <SEO title="Programs" />
         <div className="container-fluid p-0" id="program-hero">
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
@@ -98,7 +95,6 @@ const Programs = () => {
   } else {
     return (
       <Layout>
-        <SEO title="Programs" />
         <div className="container-fluid p-0" id="program-hero">
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
@@ -134,3 +130,5 @@ const Programs = () => {
 }
 
 export default Programs
+
+export const Head = () => <SEO />

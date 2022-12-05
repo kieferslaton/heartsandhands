@@ -4,6 +4,7 @@ import { Elements } from "@stripe/react-stripe-js"
 import ReCAPTCHA from "react-google-recaptcha"
 
 import Layout from "../components/layout"
+import { SEO } from "../components/seo"
 
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_API)
 
@@ -253,3 +254,5 @@ const DonateForm = props => {
 }
 
 export default DonateForm
+
+export const Head = () => <SEO />

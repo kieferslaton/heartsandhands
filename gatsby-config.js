@@ -17,7 +17,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -40,10 +39,8 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-graphql`,
+      resolve: `gatsby-source-wordpress`,
       options: {
-        typeName: `WPGraphQL`,
-        fieldName: `wpcontent`,
         url: `https://wp.heartsandhandsofbaytown.com/graphql`,
       },
     },

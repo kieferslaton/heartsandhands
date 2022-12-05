@@ -14,7 +14,7 @@ import {
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { SEO } from "../components/seo"
 import { getEvents } from "../gcal"
 
 function useWindowSize() {
@@ -127,7 +127,6 @@ const BigCalendar = props => {
                     data-bs-toggle="dropdown"
                     style={{ whiteSpace: "normal", fontSize: "0.75rem" }}
                     id={event.id}
-                    type="button"
                   >
                     {width > 1600
                       ? event.title + " | " + format(new Date(event.start), "p")
@@ -391,14 +390,12 @@ const Calendar = props => {
   if (width > 800) {
     return (
       <Layout>
-        <SEO title="Calendar" />
         <BigCalendar />
       </Layout>
     )
   } else {
     return (
       <Layout>
-        <SEO title="Calendar" />
         <SmallCalendar />
       </Layout>
     )
@@ -406,3 +403,5 @@ const Calendar = props => {
 }
 
 export default Calendar
+
+export const Head = () => <SEO />

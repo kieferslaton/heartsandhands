@@ -2,18 +2,16 @@ import React from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 
-import SEO from "../components/seo"
+import { SEO } from "../components/seo"
 
 export const query = graphql`
-  query($id: ID!) {
-    wpcontent {
-      page(id: $id) {
-        title
-        content
-        featuredImage {
-          node {
-            sourceUrl
-          }
+  query($id: String!) {
+    wpPage(id: { eq: $id }) {
+      title
+      content
+      featuredImage {
+        node {
+          sourceUrl
         }
       }
     }
@@ -21,10 +19,9 @@ export const query = graphql`
 `
 
 const Page = ({ data }) => {
-  const page = data.wpcontent.page
+  const page = data.wpPage
   return (
     <Layout>
-      <SEO title={page.title} />
       <div
         className="container-fluid p-0 hero"
         style={{
@@ -56,3 +53,5 @@ const Page = ({ data }) => {
 }
 
 export default Page
+
+export const Head = () => <SEO />

@@ -6,42 +6,43 @@ import logo from "../images/Logo.png"
 const Header = props => {
   const data = useStaticQuery(graphql`
     {
-      wpcontent {
+      wp {
         generalSettings {
           title
           url
         }
-        menu(id: "dGVybToy") {
-          menuItems {
-            nodes {
-              id
-              path
-              label
-            }
+      }
+      wpMenu(id: { eq: "dGVybToy" }) {
+        id
+        menuItems {
+          nodes {
+            id
+            label
+            path
           }
         }
-        page(id: "cG9zdDoyNQ==") {
-          page {
-            alertBar
-            hasLink
-            alertBarLink {
-              ... on WPGraphQL_Post {
-                uri
-              }
-              ... on WPGraphQL_Page {
-                uri
-              }
+      }
+      wpPage(id: { eq: "cG9zdDoyNQ==" }) {
+        page {
+          alertBar
+          hasLink
+          alertBarLink {
+            ... on WpPost {
+              uri
+            }
+            ... on WpPost {
+              uri
             }
           }
         }
       }
     }
   `)
-  const items = data.wpcontent.menu.menuItems.nodes
+  const items = data.wpMenu.menuItems.nodes
   const alert = {
-    text: data.wpcontent.page.page.alertBar,
-    hasLink: data.wpcontent.page.page.hasLink,
-    link: data.wpcontent.page.page.alertBarLink.uri,
+    text: data.wpPage.page.alertBar,
+    hasLink: data.wpPage.page.hasLink,
+    link: data.wpPage.page.alertBarLink.uri,
   }
 
   return (

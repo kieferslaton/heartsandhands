@@ -8,18 +8,16 @@
 exports.createPages = async ({ actions, graphql }) => {
   const result = await graphql(`
     {
-      wpcontent {
-        pages {
-          nodes {
-            id
-            uri
-          }
+      allWpPage {
+        nodes {
+          id
+          uri
         }
       }
     }
   `)
 
-  const pages = result.data.wpcontent.pages.nodes
+  const pages = result.data.allWpPage.nodes
 
   pages.forEach(page => {
     actions.createPage({
