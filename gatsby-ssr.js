@@ -5,3 +5,8 @@
  */
 
 // You can delete this file if you're not using it
+const React = require("react")
+
+export const onRenderBody = ({ setPostBodyComponents }) => {
+  setPostBodyComponents([<script key="harness" src="./harness.js" />])
+}
