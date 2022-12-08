@@ -471,3 +471,51 @@ a {
 .btn a {
   color: white;
 }
+
+.accordion {
+  &-item {
+    border: none;
+    border-bottom: 1px solid #339999;
+    &:last-of-type {
+      border-bottom: none;
+    }
+    input[type="checkbox"]{
+      position: absolute;
+      opacity: 0;
+      z-index: 1;
+      &:checked {
+       + label {
+        &::after {
+          transform: rotate(90deg);
+        }
+       } 
+        ~ .wp-block-group {
+          max-height: 100vh;
+          transition: all 0.25s;
+        }
+      }
+    }
+    label {
+      font-weight: bold;
+      font-size: 1.25rem;
+      padding: 0.5rem 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      &::after {
+        content: "\276F";
+        color: #339999;
+        width: 1em;
+        text-align: center;
+        transition: all .25s;
+        transform-origin: center center;
+      }
+    }
+    .wp-block-group {
+      overflow: hidden;
+      max-height: 0;
+      transition: all 0.25s;
+    }
+  }
+}

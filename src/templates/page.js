@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 
@@ -20,6 +20,30 @@ export const query = graphql`
 
 const Page = ({ data }) => {
   const page = data.wpPage
+
+  useEffect(() => {
+    var accordionItems = [...document.querySelectorAll(".accordion-item")]
+    accordionItems.forEach((item, index) => {
+      console.log(item)
+      var header = item.querySelector("h5")
+      var headerText = header.innerText
+      var checkbox = document.createElement("input")
+      checkbox.type = "checkbox"
+      checkbox.id = headerText.replaceAll(" ", "_").toLowerCase()
+      checkbox.checked = false
+      var label = document.createElement("label")
+      label.htmlFor = checkbox.id
+      label.innerText = headerText
+      item
+        .querySelector(".wp-block-group__inner-container")
+        .insertBefore(label, header)
+      item
+        .querySelector(".wp-block-group__inner-container")
+        .insertBefore(checkbox, label)
+      item.querySelector(".wp-block-group__inner-container").removeChild(header)
+    })
+  }, [])
+
   return (
     <Layout>
       <div
