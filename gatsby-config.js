@@ -41,7 +41,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: `https://wp.heartsandhandsofbaytown.com/graphql`,
+        url: `https://wp.heartsandhandsofbaytown.com/index.php?graphql`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

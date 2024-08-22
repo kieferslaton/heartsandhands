@@ -6,6 +6,8 @@ import ReCAPTCHA from "react-google-recaptcha"
 import Layout from "../components/layout"
 import { SEO } from "../components/seo"
 
+console.log(process.env.GATSBY_STRIPE_API)
+
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_API)
 
 const DonateForm = props => {

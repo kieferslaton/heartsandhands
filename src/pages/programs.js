@@ -57,6 +57,8 @@ const Programs = () => {
 
   const programs = data.allWpProgram.nodes
 
+  console.log(programs)
+
   if (width > 800) {
     return (
       <Layout>
@@ -79,14 +81,16 @@ const Programs = () => {
                   dangerouslySetInnerHTML={{ __html: program.content }}
                 />
               </div>
-              <div className="col-4 col-lg-3 my-auto pb-5">
-                <img
-                  style={{ maxHeight: 250 }}
-                  className="img-fluid"
-                  src={program.featuredImage.node.sourceUrl}
-                  alt="featured"
-                />
-              </div>
+              {program.featuredImage && (
+                <div className="col-4 col-lg-3 my-auto pb-5">
+                  <img
+                    style={{ maxHeight: 250 }}
+                    className="img-fluid"
+                    src={program.featuredImage?.node?.sourceUrl}
+                    alt="featured"
+                  />
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -105,13 +109,15 @@ const Programs = () => {
         <div className="container-fluid">
           {programs.map(program => (
             <div className="row justify-content-center program my-4">
-              <div className="col-8 pb-3 text-center">
-                <img
-                  className="img-fluid"
-                  src={program.featuredImage.sourceUrl}
-                  alt="featured"
-                />
-              </div>
+              {program.featuredImage && (
+                <div className="col-8 pb-3 text-center">
+                  <img
+                    className="img-fluid"
+                    src={program?.featuredImage?.sourceUrl}
+                    alt="featured"
+                  />
+                </div>
+              )}
               <div className="col-11">
                 <p style={{ "font-size": "1.5em" }} className="fw-bold">
                   {program.title}

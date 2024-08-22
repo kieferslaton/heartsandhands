@@ -12,7 +12,7 @@ const Header = props => {
           url
         }
       }
-      wpMenu(id: { eq: "dGVybToy" }) {
+      wpMenu(id: { eq: "dGVybToxMg==" }) {
         id
         menuItems {
           nodes {
@@ -22,43 +22,12 @@ const Header = props => {
           }
         }
       }
-      wpPage(id: { eq: "cG9zdDoyNQ==" }) {
-        page {
-          alertBar
-          hasLink
-          alertBarLink {
-            ... on WpPost {
-              uri
-            }
-            ... on WpPost {
-              uri
-            }
-          }
-        }
-      }
     }
   `)
   const items = data.wpMenu.menuItems.nodes
-  const alert = {
-    text: data.wpPage.page.alertBar,
-    hasLink: data.wpPage.page.hasLink,
-    link: data.wpPage.page.alertBarLink.uri,
-  }
 
   return (
     <>
-      {alert.text && (
-        <div id="covid-banner" className="bg-dark py-1 mb-1 text-center">
-          <Link
-            to={alert.hasLink ? alert.link : "/"}
-            style={{ pointerEvents: alert.hasLink ? "all" : "none" }}
-          >
-            <button className="btn btn-dark w-100 text-uppercase py-0 px-1">
-              {alert.text}
-            </button>
-          </Link>
-        </div>
-      )}
       <nav className="navbar navbar-expand-md m-0 px-0 py-1">
         <Link to="/" className="navbar-brand text-center mx-1 mx-lg-5">
           <img className="m-0" style={{ height: 60 }} src={logo} alt="logo" />
