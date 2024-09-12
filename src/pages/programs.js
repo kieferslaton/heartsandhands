@@ -40,6 +40,15 @@ const Programs = () => {
 
   const data = useStaticQuery(graphql`
     {
+      wpPage(title: { eq: "Programs" }) {
+        content
+        title
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+      }
       allWpProgram {
         nodes {
           content
@@ -55,14 +64,24 @@ const Programs = () => {
     }
   `)
 
-  const programs = data.allWpProgram.nodes
+  console.log(data)
 
-  console.log(programs)
+  const programs = data.allWpProgram.nodes
 
   if (width > 800) {
     return (
       <Layout>
-        <div className="container-fluid p-0" id="program-hero">
+        <div
+          className="container-fluid p-0"
+          id="program-hero"
+          style={{
+            background: data?.wpPage.featuredImage
+              ? `url(${data?.wpPage.featuredImage.node.sourceUrl})`
+              : "black",
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+          }}
+        >
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
               <p className="fw-bold hero-text">Programs</p>
@@ -99,7 +118,17 @@ const Programs = () => {
   } else {
     return (
       <Layout>
-        <div className="container-fluid p-0" id="program-hero">
+        <div
+          className="container-fluid p-0"
+          id="program-hero"
+          style={{
+            background: data?.wpPage.featuredImage
+              ? `url(${data?.wpPage.featuredImage.node.sourceUrl})`
+              : "black",
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+          }}
+        >
           <div className="row h-100 align-items-center overlay m-0">
             <div className="col-12 text-center align-items-center">
               <p className="fw-bold hero-text">Programs</p>

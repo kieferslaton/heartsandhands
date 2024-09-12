@@ -8,5 +8,5 @@
 const React = require("react")
 
 export const onRenderBody = ({ setPostBodyComponents }) => {
-  setPostBodyComponents([<script key="harness" src="./harness.js" />])
+  setPostBodyComponents([])
 }

@@ -14,10 +14,6 @@ $accent2: #fcab5f;
   font-weight: 300;
 }
 
-em {
-  font-weight: bold;
-}
-
 #covid-banner button {
   color: white;
   border: none;
@@ -96,7 +92,6 @@ footer {
 }
 
 #program-hero {
-  background-image: url("../images/program-hero.jpg");
   background-size: cover;
   background-position: center center;
   height: 400px;
@@ -468,8 +463,23 @@ a {
   text-decoration: none;
 }
 
+strong {
+  font-weight: bold;
+}
+
 .btn a {
   color: white;
+}
+
+.wp-block-button__link {
+  background-color: #fcab5f;
+  display: inline-block;
+  border-radius: 5px;
+  font-weight: bold;
+  width: auto;
+  margin-bottom: 1rem !important;
+  padding: 0.375rem 0.75rem;
+  color: #000;
 }
 
 .accordion {
