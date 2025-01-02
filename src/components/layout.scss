@@ -529,3 +529,18 @@ strong {
     }
   }
 }
+
+.content {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+  }
+}
+
+.content img {
+  max-width: 100%;
+  object-fit: contain !important;
+}
+
+.content img, .content video, .content a {
+  margin: 1rem 0 2rem;
+}
